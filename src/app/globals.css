@@ -1,26 +1,53 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    background-color: #fcf9f8;
+    color: #1c1b1b;
+    font-family: var(--font-montserrat), sans-serif;
+    overflow-x: hidden;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+/* Custom Scrollbar using LAND POWER Brand Blue */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #f6f3f2;
+}
+::-webkit-scrollbar-thumb {
+  background: #034F90;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #023b6d;
+}
+
+/* Smooth Image Hover Zoom Utility */
+.img-zoom-container {
+  overflow: hidden;
+}
+.img-zoom-container img {
+  transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.img-zoom-container:hover img {
+  transform: scale(1.06);
+}
+
+/* Premium Glass Shimmer Animation for Abhivorn Technologies */
+@keyframes glassShimmer {
+  0% {
+    background-position: 250% center;
+  }
+  100% {
+    background-position: -250% center;
+  }
+}
+
+.animate-glassShimmer {
+  animation: glassShimmer 5s linear infinite;
 }
