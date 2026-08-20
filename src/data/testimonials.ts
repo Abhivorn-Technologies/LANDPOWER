@@ -7,7 +7,7 @@ export const testimonialsData: Testimonial[] = [
     role: 'test1Role',
     quoteKey: 'test1Quote',
     rating: 5,
-    location: 'Bangalore',
+    location: 'Visakhapatnam',
   },
   {
     id: 'test-2',
@@ -15,7 +15,7 @@ export const testimonialsData: Testimonial[] = [
     role: 'test2Role',
     quoteKey: 'test2Quote',
     rating: 5,
-    location: 'Bangalore',
+    location: 'Visakhapatnam',
   },
   {
     id: 'test-3',
@@ -23,6 +23,6 @@ export const testimonialsData: Testimonial[] = [
     role: 'test3Role',
     quoteKey: 'test3Quote',
     rating: 5,
-    location: 'Bangalore',
+    location: 'Visakhapatnam',
   },
 ];

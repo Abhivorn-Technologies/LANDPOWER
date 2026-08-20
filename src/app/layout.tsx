@@ -22,24 +22,24 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://www.landpower.com'),
+  metadataBase: new URL('https://www.landpower.in'),
   title: {
     default: 'LAND POWER | Real Estate & Constructions',
     template: '%s | LAND POWER',
   },
   description:
-    'LAND POWER is your trusted partner in premier real estate and turnkey construction solutions. Specializing in RERA-approved open plots, luxury villas, residential communities, and commercial developments.',
+    'LAND POWER is your trusted partner in premier real estate and turnkey construction solutions. Headquartered in Visakhapatnam, specializing in open plots, luxury villas, residential communities, and commercial developments.',
   keywords: [
     'LAND POWER',
-    'Real Estate Bangalore',
-    'Open Plots Bangalore',
-    'Luxury Villas',
-    'Residential Communities',
-    'Commercial Construction',
+    'Real Estate Visakhapatnam',
+    'Open Plots Visakhapatnam',
+    'Luxury Villas Andhra Pradesh',
+    'Residential Communities Visakhapatnam',
+    'Commercial Construction Visakhapatnam',
     'Turnkey Civil Engineering',
     'Rama Krishna Rompivalasa',
-    'RERA Approved Layouts',
-    'Property Investments',
+    'Akkayapalem Real Estate',
+    'Prathapas Pride Visakhapatnam',
   ],
   authors: [{ name: 'LAND POWER Real Estate & Constructions' }],
   creator: 'LAND POWER',
@@ -57,8 +57,8 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'LAND POWER | Real Estate & Constructions',
     description:
-      'Building Your Dreams Into Reality with trust, transparency, and structural excellence across luxury villas, open plots, and commercial developments.',
-    url: 'https://www.landpower.com',
+      'Building Your Dreams Into Reality with trust, transparency, and structural excellence across luxury villas, open plots, and commercial developments in Visakhapatnam & Andhra Pradesh.',
+    url: 'https://www.landpower.in',
     siteName: 'LAND POWER',
     locale: 'en_US',
     type: 'website',
@@ -75,7 +75,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'LAND POWER | Real Estate & Constructions',
     description:
-      'Building Your Dreams Into Reality with trust, transparency, and structural excellence across luxury villas, open plots, and commercial developments.',
+      'Building Your Dreams Into Reality with trust, transparency, and structural excellence across luxury villas, open plots, and commercial developments in Visakhapatnam & Andhra Pradesh.',
     images: ['/assets/branding/logo.png'],
   },
   robots: {
@@ -96,23 +96,27 @@ const jsonLdSchema = {
   '@context': 'https://schema.org',
   '@type': 'RealEstateAgent',
   name: 'LAND POWER Real Estate & Constructions',
-  image: 'https://www.landpower.com/assets/branding/logo.png',
-  '@id': 'https://www.landpower.com',
-  url: 'https://www.landpower.com',
-  telephone: '+916360644099',
+  image: 'https://www.landpower.in/assets/branding/logo.png',
+  '@id': 'https://www.landpower.in',
+  url: 'https://www.landpower.in',
+  telephone: '+91 90102 14100',
+  additionalType: '0891-2712345',
+  email: 'sales@landpower.in',
   address: {
     '@type': 'PostalAddress',
-    streetAddress: 'Bangalore Business District',
-    addressLocality: 'Bangalore',
-    addressRegion: 'Karnataka',
-    postalCode: '560001',
+    streetAddress: 'No: 49-47-9, Flat No: 201 & 202, Prathapas Pride, Santhipuram, Akkayapalem',
+    addressLocality: 'Visakhapatnam',
+    addressRegion: 'Andhra Pradesh',
+    postalCode: '530016',
     addressCountry: 'IN',
   },
   geo: {
     '@type': 'GeoCoordinates',
-    latitude: 12.9716,
-    longitude: 77.5946,
+    latitude: 17.7365065,
+    longitude: 83.3027272,
   },
+  hasMap:
+    'https://www.google.com/maps/place/pratapas+pride,+Akkayyapalem,+Visakhapatnam,+Andhra+Pradesh+530016/@17.7365583,83.3028294,17z/data=!4m6!3m5!1s0x3a39432e474bdf79:0xf5484a99e9507fd4!8m2!3d17.7365065!4d83.3027272!16s%2Fg%2F11q2sdpfr3?hl=en&entry=ttu',
   openingHoursSpecification: {
     '@type': 'OpeningHoursSpecification',
     dayOfWeek: [

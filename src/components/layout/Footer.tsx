@@ -4,7 +4,10 @@ import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useLanguage } from '@/i18n/LanguageContext';
-import { Phone, Mail, MapPin } from 'lucide-react';
+import { Phone, Smartphone, Mail, MapPin } from 'lucide-react';
+
+const GOOGLE_MAPS_URL =
+  'https://www.google.com/maps/place/pratapas+pride,+Akkayyapalem,+Visakhapatnam,+Andhra+Pradesh+530016/@17.7365583,83.3028294,17z/data=!4m6!3m5!1s0x3a39432e474bdf79:0xf5484a99e9507fd4!8m2!3d17.7365065!4d83.3027272!16s%2Fg%2F11q2sdpfr3?hl=en&entry=ttu';
 
 export const Footer: React.FC = () => {
   const { t } = useLanguage();
@@ -146,18 +149,40 @@ export const Footer: React.FC = () => {
           <h4 className="font-serif text-xl font-semibold text-[#fcf9f8] mb-6 border-b border-white/10 pb-2">
             {t.footer.contactInfo}
           </h4>
-          <ul className="space-y-4 font-sans text-sm text-[#e5e2e1]/80">
+          <ul className="space-y-3 font-sans text-sm text-[#e5e2e1]/80">
             <li className="flex items-start gap-3">
               <Phone className="w-4 h-4 text-[#ffdea5] mt-1 shrink-0" />
-              <span>+91 6360644099</span>
+              <a href="tel:08912712345" className="hover:text-[#ffdea5] transition-colors">
+                Phone: 0891-2712345
+              </a>
+            </li>
+            <li className="flex items-start gap-3">
+              <Smartphone className="w-4 h-4 text-[#ffdea5] mt-1 shrink-0" />
+              <a href="tel:+919010214100" className="hover:text-[#ffdea5] transition-colors font-semibold">
+                Mobile: +91 90102 14100
+              </a>
             </li>
             <li className="flex items-start gap-3">
               <Mail className="w-4 h-4 text-[#ffdea5] mt-1 shrink-0" />
-              <span>contact@landpower.com</span>
+              <div className="flex flex-col gap-0.5">
+                <a href="mailto:sales@landpower.in" className="hover:text-[#ffdea5] transition-colors">
+                  sales@landpower.in
+                </a>
+                <a href="mailto:marketing@landpower.in" className="hover:text-[#ffdea5] transition-colors">
+                  marketing@landpower.in
+                </a>
+              </div>
             </li>
             <li className="flex items-start gap-3">
               <MapPin className="w-4 h-4 text-[#ffdea5] mt-1 shrink-0" />
-              <span>{t.contact.officeAddress}</span>
+              <a
+                href={GOOGLE_MAPS_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-[#ffdea5] transition-colors leading-relaxed group"
+              >
+                Prathapas Pride, Santhipuram, Akkayapalem, Visakhapatnam – 530016, Andhra Pradesh
+              </a>
             </li>
           </ul>
         </div>

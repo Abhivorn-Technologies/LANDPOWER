@@ -33,7 +33,7 @@ export const FloatingActions: React.FC = () => {
 
       {/* Floating WhatsApp Action */}
       <a
-        href="https://wa.me/916360644099"
+        href="https://wa.me/919010214100"
         target="_blank"
         rel="noopener noreferrer"
         className="w-14 h-14 rounded-full bg-[#25D366] text-white shadow-2xl flex items-center justify-center hover:scale-110 transition-transform focus:outline-none relative group"

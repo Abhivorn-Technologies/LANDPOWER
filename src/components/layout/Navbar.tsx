@@ -155,11 +155,11 @@ export const Navbar: React.FC = () => {
           <motion.a
             whileHover={{ y: -2, scale: 1.03 }}
             whileTap={{ scale: 0.97 }}
-            href="tel:+916360644099"
+            href="tel:+919010214100"
             className="hidden sm:flex items-center gap-2 text-xs font-bold text-[#034F90] border border-[#034F90]/30 px-4 py-2.5 rounded-full hover:bg-[#034F90] hover:text-white shadow-sm hover:shadow transition-all duration-300"
           >
             <Phone className="w-3.5 h-3.5 text-[#034F90] group-hover:text-white" />
-            <span>+91 6360644099</span>
+            <span>+91 90102 14100</span>
           </motion.a>
 
           {/* Mobile Menu Toggle Button */}
@@ -195,11 +195,11 @@ export const Navbar: React.FC = () => {
           </nav>
           <div className="pt-2">
             <a
-              href="tel:+916360644099"
+              href="tel:+919010214100"
               className="flex items-center justify-center gap-2 w-full text-sm font-bold text-white bg-[#034F90] hover:bg-[#023b6d] px-4 py-3 rounded-full shadow transition-all duration-300"
             >
               <Phone className="w-4 h-4 text-white" />
-              <span>+91 6360644099</span>
+              <span>+91 90102 14100</span>
             </a>
           </div>
         </div>

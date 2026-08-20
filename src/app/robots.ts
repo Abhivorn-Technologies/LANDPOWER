@@ -5,7 +5,8 @@ export default function robots(): MetadataRoute.Robots {
     rules: {
       userAgent: '*',
       allow: '/',
+      disallow: ['/api/', '/_next/'],
     },
-    sitemap: 'https://www.landpower.com/sitemap.xml',
+    sitemap: 'https://www.landpower.in/sitemap.xml',
   };
 }
