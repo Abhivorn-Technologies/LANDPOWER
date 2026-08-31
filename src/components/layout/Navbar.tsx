@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
@@ -48,7 +48,7 @@ export const Navbar: React.FC = () => {
 
   // Exact 7 Navigation links pointing to main page sections
   const navLinks = [
-    { href: '/#home', label: t.nav.home, id: 'home' },
+    { href: '/', label: t.nav.home, id: 'home' },
     { href: '/#about', label: t.nav.about, id: 'about' },
     { href: '/#services', label: t.nav.services, id: 'services' },
     { href: '/#projects', label: t.nav.projects, id: 'projects' },
@@ -64,6 +64,21 @@ export const Navbar: React.FC = () => {
       setClickedNavIndex(null);
     }, 650);
   };
+
+  // Home link handler: if already on homepage, scroll to top smoothly instead of
+  // relying on /#home hash which can fail before hydration completes
+  const handleHomeClick = useCallback(
+    (e: React.MouseEvent<HTMLAnchorElement>) => {
+      if (pathname === '/') {
+        e.preventDefault();
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+      // For other pages, let Next.js navigate to '/' normally
+      handleNavClick(0);
+      setMobileMenuOpen(false);
+    },
+    [pathname] // eslint-disable-line react-hooks/exhaustive-deps
+  );
 
   return (
     <header
@@ -119,7 +134,7 @@ export const Navbar: React.FC = () => {
               >
                 <Link
                   href={link.href}
-                  onClick={() => handleNavClick(index)}
+                  onClick={link.id === 'home' ? handleHomeClick : () => handleNavClick(index)}
                   className={`relative font-sans text-sm font-semibold tracking-wider transition-colors duration-200 py-2 inline-block ${
                     isActive ? 'text-[#034F90]' : 'text-[#034F90]/80 hover:text-[#034F90]'
                   }`}
@@ -183,7 +198,7 @@ export const Navbar: React.FC = () => {
               <Link
                 key={link.id}
                 href={link.href}
-                onClick={() => {
+                onClick={link.id === 'home' ? handleHomeClick : () => {
                   handleNavClick(index);
                   setMobileMenuOpen(false);
                 }}

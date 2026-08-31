@@ -21,6 +21,7 @@ export const ManagingDirector: React.FC = () => {
               alt="Managing Director Rama Krishna Rompivalasa"
               fill
               unoptimized
+              sizes="(max-width: 1024px) 100vw, 40vw"
               className="object-cover object-top"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-[#034F90] via-[#034F90]/20 to-transparent lg:bg-gradient-to-r" />

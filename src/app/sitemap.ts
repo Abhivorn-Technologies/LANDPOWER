@@ -14,6 +14,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     '/services/residential-spaces',
     '/services/commercial-spaces',
     '/services/investment-guidance',
+    '/services/property-assistance',
+    '/services/construction',
   ];
 
   return routes.map((route) => ({

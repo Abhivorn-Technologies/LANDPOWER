@@ -67,6 +67,7 @@ export const Services: React.FC = () => {
                         alt={service.titleKey}
                         fill
                         unoptimized
+                        sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
                         className="object-cover transition-transform duration-700 group-hover:scale-108"
                       />
                       <div className="absolute top-3 left-3 w-12 h-12 bg-white/90 backdrop-blur-sm rounded-lg flex items-center justify-center group-hover:bg-[#034F90] transition-colors shadow-md">

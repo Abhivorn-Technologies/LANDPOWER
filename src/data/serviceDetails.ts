@@ -275,6 +275,57 @@ export const serviceDetailsData: Record<string, ServiceDetail> = {
       'Book a 1-on-1 strategic consultation with our senior investment advisors today.',
   },
 
+  'property-assistance': {
+    slug: 'property-assistance',
+    title: 'Property Assistance & Advisory',
+    eyebrow: 'LAND POWER SERVICES',
+    shortIntro:
+      'Comprehensive property assistance services covering legal title verifications, documentation, registration support, and end-to-end transaction advisory.',
+    image: '/assets/services/Property Assistance.png',
+    overviewHeading: 'Hassle-Free Property Acquisition & Legal Due Diligence',
+    overviewText1:
+      'Navigating property transactions, documentation, and regulatory compliance requires thorough verification and professional guidance. LAND POWER provides complete property assistance to ensure every acquisition is legally sound and seamlessly executed.',
+    overviewText2:
+      'From encumbrance verification and revenue record checks to liaison with registration authorities and financial institutions, our seasoned team handles every detail with complete transparency and dedication.',
+    featuresHeading: 'Our Property Assistance Services',
+    featuresSubtitle: 'End-to-end legal, financial, and documentation support for property buyers and investors.',
+    features: [
+      {
+        iconName: 'ShieldCheck',
+        title: 'Title Verification & Legal Due Diligence',
+        description:
+          'In-depth scrutiny of property title deeds, parent documents, and encumbrance certificates.',
+      },
+      {
+        iconName: 'Building',
+        title: 'Documentation & Registration Support',
+        description:
+          'Seamless assistance with drafting sale agreements, deed registrations, and mutation records.',
+      },
+      {
+        iconName: 'Compass',
+        title: 'Financial & Bank Loan Facilitation',
+        description:
+          'Liaison with top nationalized and private banks for fast-track loan sanctions and approvals.',
+      },
+      {
+        iconName: 'Award',
+        title: 'NRI Property Desk & Management',
+        description:
+          'Dedicated services for non-resident buyers including power of attorney execution and asset advisory.',
+      },
+    ],
+    highlights: [
+      '100% Verified Legal Titles & Clear Documentation',
+      'Assistance with HMDA / DTCP / RERA Regulatory Compliance',
+      'Dedicated Customer Relationship Managers',
+      'Transparent Fee Structure with Zero Hidden Costs',
+    ],
+    ctaTitle: 'Need Property Assistance or Legal Verification?',
+    ctaSubtitle:
+      'Speak with our senior property advisors today for end-to-end guidance and legal documentation support.',
+  },
+
   'construction': {
     slug: 'construction',
     title: 'Construction & Architectural Services',

@@ -36,9 +36,9 @@ export const AnimatedSection: React.FC<AnimatedSectionProps> = ({
       case 'down':
         return { opacity: 0, y: -32 };
       case 'left':
-        return { opacity: 0, x: -32 };
+        return { opacity: 0, x: -50 };
       case 'right':
-        return { opacity: 0, x: 32 };
+        return { opacity: 0, x: 50 };
       case 'none':
       default:
         return { opacity: 0, y: 0, scale: 0.96 };

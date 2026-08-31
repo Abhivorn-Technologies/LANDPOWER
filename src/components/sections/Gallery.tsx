@@ -59,6 +59,7 @@ export const Gallery: React.FC = () => {
                 src={item.image}
                 alt={item.title}
                 fill
+                sizes="(max-width: 768px) 50vw, 25vw"
                 className="object-cover transition-transform duration-700 group-hover:scale-108"
               />
               <div className="absolute inset-0 bg-[#034F90]/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col items-center justify-center text-white p-4">
@@ -85,6 +86,7 @@ export const Gallery: React.FC = () => {
                 src={activeModalImage.image}
                 alt={activeModalImage.title}
                 fill
+                sizes="100vw"
                 className="object-contain"
               />
               <div className="absolute bottom-0 inset-x-0 bg-gradient-to-t from-[#023b6d] to-transparent p-6 text-white text-center">

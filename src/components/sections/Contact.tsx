@@ -5,7 +5,7 @@ import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { useLanguage } from '@/i18n/LanguageContext';
 import { AnimatedSection } from '../common/AnimatedSection';
-import { Phone, Smartphone, Mail, MapPin, ExternalLink, Send, CheckCircle } from 'lucide-react';
+import { Phone, Smartphone, Mail, MapPin, ExternalLink, Send, CheckCircle, Loader2 } from 'lucide-react';
 
 const GOOGLE_MAPS_URL =
   'https://www.google.com/maps/place/pratapas+pride,+Akkayyapalem,+Visakhapatnam,+Andhra+Pradesh+530016/@17.7365583,83.3028294,17z/data=!4m6!3m5!1s0x3a39432e474bdf79:0xf5484a99e9507fd4!8m2!3d17.7365065!4d83.3027272!16s%2Fg%2F11q2sdpfr3?hl=en&entry=ttu';
@@ -13,6 +13,14 @@ const GOOGLE_MAPS_URL =
 export const Contact: React.FC = () => {
   const { t } = useLanguage();
   const [submitted, setSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isActivationPending, setIsActivationPending] = useState(false);
+  const [submittedData, setSubmittedData] = useState<{
+    firstName: string;
+    email: string;
+    phone: string;
+    details: string;
+  } | null>(null);
   const [formData, setFormData] = useState({
     firstName: '',
     email: '',
@@ -20,13 +28,62 @@ export const Contact: React.FC = () => {
     details: '',
   });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setSubmitted(true);
-    setTimeout(() => {
-      setSubmitted(false);
-      setFormData({ firstName: '', email: '', phone: '', details: '' });
-    }, 4000);
+    setIsSubmitting(true);
+    setIsActivationPending(false);
+    const currentData = { ...formData };
+
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(currentData),
+      });
+
+      const result = await response.json();
+
+      if (response.ok && result.success) {
+        setSubmittedData(currentData);
+        setSubmitted(true);
+        if (result.needsActivation) {
+          setIsActivationPending(true);
+        }
+        setFormData({ firstName: '', email: '', phone: '', details: '' });
+      } else {
+        // Fallback: trigger mailto if API returned non-200
+        const recipient = 'ajayguvva7890@gmail.com';
+        const subject = encodeURIComponent(`Free Consultation Request - ${currentData.firstName}`);
+        const body = encodeURIComponent(
+          `New Consultation Request:\n\n` +
+          `First Name: ${currentData.firstName}\n` +
+          `Email Address: ${currentData.email || 'Not provided'}\n` +
+          `Phone Number: ${currentData.phone}\n` +
+          `Project Details:\n${currentData.details || 'None provided'}\n`
+        );
+        window.location.href = `mailto:${recipient}?subject=${subject}&body=${body}`;
+        setSubmittedData(currentData);
+        setSubmitted(true);
+      }
+    } catch {
+      // Fallback on network exception
+      const recipient = 'ajayguvva7890@gmail.com';
+      const subject = encodeURIComponent(`Free Consultation Request - ${currentData.firstName}`);
+      const body = encodeURIComponent(
+        `New Consultation Request:\n\n` +
+        `First Name: ${currentData.firstName}\n` +
+        `Email Address: ${currentData.email || 'Not provided'}\n` +
+        `Phone Number: ${currentData.phone}\n` +
+        `Project Details:\n${currentData.details || 'None provided'}\n`
+      );
+      window.location.href = `mailto:${recipient}?subject=${subject}&body=${body}`;
+      setSubmittedData(currentData);
+      setSubmitted(true);
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -82,7 +139,11 @@ export const Contact: React.FC = () => {
               <h4 className="font-sans text-xs uppercase tracking-wider font-bold text-[#775a19] mb-2">
                 Email Addresses
               </h4>
-              <div className="flex flex-wrap gap-4 font-sans text-sm font-semibold text-[#034F90]">
+              <div className="flex flex-wrap items-center gap-3 font-sans text-sm font-semibold text-[#034F90]">
+                <a href="mailto:ajayguvva7890@gmail.com" className="hover:underline text-[#034F90] font-bold">
+                  ajayguvva7890@gmail.com
+                </a>
+                <span className="text-gray-300">|</span>
                 <a href="mailto:sales@landpower.in" className="hover:underline hover:text-[#023b6d]">
                   sales@landpower.in
                 </a>
@@ -131,6 +192,7 @@ export const Contact: React.FC = () => {
               src="/assets/contact/visakhapatnam-map.png"
               alt="LAND POWER Visakhapatnam Google Maps Preview"
               fill
+              sizes="(max-width: 1024px) 100vw, 50vw"
               className="object-cover group-hover:scale-105 transition-transform duration-500"
             />
 
@@ -164,17 +226,63 @@ export const Contact: React.FC = () => {
             <h3 className="font-serif text-2xl sm:text-3xl text-[#ffdea5] font-bold mb-2">
               {t.contact.formTitle}
             </h3>
-            <p className="font-sans text-xs sm:text-sm text-[#e5e2e1]/80 mb-8">
+            <p className="font-sans text-xs sm:text-sm text-[#e5e2e1]/80 mb-4">
               {t.contact.formSubtitle}
             </p>
+            <div className="mb-6 p-3 bg-white/10 border border-[#ffdea5]/30 rounded-lg flex items-center justify-between text-xs font-sans">
+              <span className="text-[#e5e2e1]/90">Submissions sent to:</span>
+              <a href="mailto:ajayguvva7890@gmail.com" className="font-bold text-[#ffdea5] hover:underline">
+                ajayguvva7890@gmail.com
+              </a>
+            </div>
 
             {submitted ? (
-              <div className="py-12 text-center space-y-4">
+              <div className="py-8 text-center space-y-4">
                 <CheckCircle className="w-16 h-16 text-[#ffdea5] mx-auto animate-bounce" />
-                <h4 className="font-serif text-2xl text-white font-bold">Thank You!</h4>
+                <h4 className="font-serif text-2xl text-white font-bold">Request Submitted!</h4>
                 <p className="font-sans text-sm text-[#e5e2e1]/90">
-                  Your inquiry has been received. Our expert team will get back to you shortly.
+                  Thank you <span className="font-bold text-[#ffdea5]">{submittedData?.firstName}</span>! Your consultation request has been processed.
                 </p>
+
+                {isActivationPending && (
+                  <div className="bg-[#ffdea5]/15 border border-[#ffdea5] p-4 rounded-xl text-left font-sans text-xs space-y-2 max-w-md mx-auto my-3 text-white">
+                    <p className="font-bold text-[#ffdea5] text-sm flex items-center gap-1.5">
+                      <span>📩 Action Needed on ajayguvva7890@gmail.com</span>
+                    </p>
+                    <p className="text-[#e5e2e1] leading-relaxed">
+                      FormSubmit sent an initial <strong>&quot;Activate Form&quot;</strong> email to <strong>ajayguvva7890@gmail.com</strong>.
+                    </p>
+                    <p className="text-[#ffdea5]/90 text-[11px] italic">
+                      👉 Open Gmail (Inbox or Spam folder) and click &quot;Activate Form&quot; once to enable direct delivery for all future website forms!
+                    </p>
+                  </div>
+                )}
+
+                <div className="bg-white/10 backdrop-blur-md border border-white/20 p-4 rounded-xl text-left font-sans text-xs space-y-2 max-w-md mx-auto my-4 text-[#e5e2e1]">
+                  <div className="flex items-center justify-between border-b border-white/15 pb-2">
+                    <span className="text-[#ffdea5] font-semibold">Target Email:</span>
+                    <span className="font-bold text-white">ajayguvva7890@gmail.com</span>
+                  </div>
+                  <div><span className="text-[#e5e2e1]/70">Phone:</span> <strong className="text-white">{submittedData?.phone}</strong></div>
+                  {submittedData?.email && <div><span className="text-[#e5e2e1]/70">Client Email:</span> <strong className="text-white">{submittedData.email}</strong></div>}
+                  {submittedData?.details && <div><span className="text-[#e5e2e1]/70">Details:</span> <span className="text-white italic">{submittedData.details}</span></div>}
+                </div>
+
+                <div className="flex flex-col sm:flex-row items-center justify-center gap-3 pt-2">
+                  <a
+                    href={`mailto:ajayguvva7890@gmail.com?subject=${encodeURIComponent(`Consultation Request from ${submittedData?.firstName}`)}&body=${encodeURIComponent(`Name: ${submittedData?.firstName}\nPhone: ${submittedData?.phone}\nEmail: ${submittedData?.email || 'N/A'}\nDetails: ${submittedData?.details || 'N/A'}`)}`}
+                    className="px-5 py-2.5 bg-[#ffdea5] text-[#034F90] rounded-lg font-bold text-xs hover:bg-white transition-colors"
+                  >
+                    Open Gmail / Send Direct Mail
+                  </a>
+                  <button
+                    type="button"
+                    onClick={() => setSubmitted(false)}
+                    className="text-xs font-bold text-[#ffdea5] hover:underline"
+                  >
+                    Send another request
+                  </button>
+                </div>
               </div>
             ) : (
               <form onSubmit={handleSubmit} className="space-y-6">
@@ -245,11 +353,21 @@ export const Contact: React.FC = () => {
                 <motion.button
                   whileHover={{ y: -2, scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
+                  disabled={isSubmitting}
                   type="submit"
-                  className="px-8 py-3.5 bg-[#fed488] text-[#034F90] font-sans text-sm font-bold rounded-lg hover:bg-[#e9c176] transition-colors mt-4 flex items-center justify-center gap-2 shadow-lg"
+                  className="px-8 py-3.5 bg-[#fed488] text-[#034F90] font-sans text-sm font-bold rounded-lg hover:bg-[#e9c176] transition-colors mt-4 flex items-center justify-center gap-2 shadow-lg disabled:opacity-60"
                 >
-                  <Send className="w-4 h-4 text-[#034F90]" />
-                  <span>{t.contact.submit}</span>
+                  {isSubmitting ? (
+                    <>
+                      <Loader2 className="w-4 h-4 text-[#034F90] animate-spin" />
+                      <span>Sending Request...</span>
+                    </>
+                  ) : (
+                    <>
+                      <Send className="w-4 h-4 text-[#034F90]" />
+                      <span>{t.contact.submit}</span>
+                    </>
+                  )}
                 </motion.button>
               </form>
             )}

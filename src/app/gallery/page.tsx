@@ -159,6 +159,7 @@ export default function GalleryPage() {
               alt="LAND POWER Project Gallery Portfolio"
               fill
               unoptimized
+              sizes="100vw"
               className="object-cover object-center"
               priority
             />
@@ -218,6 +219,7 @@ export default function GalleryPage() {
                     alt={item.title}
                     fill
                     unoptimized
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                     className="object-cover transition-transform duration-700 ease-out group-hover:scale-[1.03]"
                   />
 
@@ -281,6 +283,7 @@ export default function GalleryPage() {
                     alt={activeItem.title}
                     fill
                     unoptimized
+                    sizes="100vw"
                     className="object-contain"
                   />
                 </div>

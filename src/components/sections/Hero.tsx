@@ -54,6 +54,7 @@ export const Hero: React.FC = () => {
             alt="LAND POWER Luxury Estate"
             fill
             unoptimized
+            sizes="100vw"
             className="object-cover object-center"
             priority
           />

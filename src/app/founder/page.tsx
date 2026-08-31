@@ -21,6 +21,8 @@ import {
   Compass,
   ArrowRight,
   ChevronDown,
+  ChevronLeft,
+  Mail,
   Building2,
   Sparkles,
   CheckCircle2,
@@ -144,6 +146,15 @@ export default function FounderPage() {
 
             {/* Right: Founder Editorial Content (7 Cols) */}
             <AnimatedSection delay={0.15} direction="up" className="lg:col-span-7">
+              {/* Back Link */}
+              <Link
+                href="/#leadership"
+                className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#775a19] hover:text-[#034F90] uppercase tracking-widest mb-6 transition-colors group"
+              >
+                <ChevronLeft className="w-4 h-4 transition-transform group-hover:-translate-x-1" />
+                <span>Back to Leadership</span>
+              </Link>
+
               <div className="flex items-center gap-2 mb-4">
                 <div className="w-8 h-[1px] bg-[#775a19]" />
                 <span className="font-sans text-xs uppercase tracking-widest text-[#775a19] font-semibold">
@@ -164,9 +175,20 @@ export default function FounderPage() {
                 Visionary Leader. Ethical Entrepreneur. Committed Philanthropist.
               </div>
 
-              <p className="font-sans text-base text-[#43474e] mb-8 leading-relaxed">
+              <p className="font-sans text-base text-[#43474e] mb-6 leading-relaxed">
                 Rama Krishna Rompivalasa is an accomplished entrepreneur, business leader, and philanthropist with more than two decades of real estate experience. As the Managing Director of <strong>Land Power</strong>, his leadership is built around total transparency, architectural innovation, customer trust, and long-term value creation.
               </p>
+
+              {/* Email Link */}
+              <div className="mb-6">
+                <a
+                  href="mailto:rk@landpower.in"
+                  className="inline-flex items-center gap-2 text-xs sm:text-sm font-semibold text-[#034F90] hover:text-[#023b6d] bg-white border border-[#034F90]/30 px-4 py-2.5 rounded-lg shadow-sm hover:shadow transition-all"
+                >
+                  <Mail className="w-4 h-4 text-[#034F90]" />
+                  <span>rk@landpower.in</span>
+                </a>
+              </div>
 
               {/* Quote Block */}
               <blockquote className="border-l-4 border-[#034F90] pl-6 py-3 bg-[#f6f3f2] rounded-r-xl mb-8">
@@ -446,13 +468,23 @@ export default function FounderPage() {
                 Rama Krishna Rompivalasa’s journey reflects the belief that lasting success is built through vision, integrity, trust, and an unwavering commitment to creating value that extends beyond business.
               </p>
 
-              <Link
-                href="/#projects"
-                className="inline-flex items-center gap-2 px-8 py-4 bg-[#fed488] text-[#034F90] hover:bg-[#e9c176] font-sans text-xs font-bold uppercase tracking-widest rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 group"
-              >
-                <span>EXPLORE LAND POWER PROJECTS</span>
-                <ArrowRight className="w-4 h-4 text-[#034F90] transition-transform duration-300 group-hover:translate-x-1" />
-              </Link>
+              <div className="flex flex-wrap items-center justify-center gap-4">
+                <Link
+                  href="/#projects"
+                  className="inline-flex items-center gap-2 px-8 py-4 bg-[#fed488] text-[#034F90] hover:bg-[#e9c176] font-sans text-xs font-bold uppercase tracking-widest rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 group"
+                >
+                  <span>EXPLORE LAND POWER PROJECTS</span>
+                  <ArrowRight className="w-4 h-4 text-[#034F90] transition-transform duration-300 group-hover:translate-x-1" />
+                </Link>
+
+                <a
+                  href="mailto:rk@landpower.in"
+                  className="inline-flex items-center gap-2 px-8 py-4 bg-transparent text-white border border-white/30 hover:border-white hover:bg-[#023b6d] font-sans text-xs font-bold uppercase tracking-widest rounded-lg transition-all duration-300 group"
+                >
+                  <Mail className="w-4 h-4 text-[#ffdea5]" />
+                  <span>CONTACT (rk@landpower.in)</span>
+                </a>
+              </div>
             </AnimatedSection>
           </div>
         </section>
