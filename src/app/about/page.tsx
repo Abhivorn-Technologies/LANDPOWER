@@ -11,54 +11,46 @@ import { AnimatedSection } from '@/components/common/AnimatedSection';
 import { useLanguage } from '@/i18n/LanguageContext';
 import { useReducedMotion } from '@/hooks/useReducedMotion';
 import {
-  Compass,
   ShieldCheck,
-  Award,
   TrendingUp,
-  Mail,
-  ArrowRight,
-  CheckCircle2,
-  Building2,
   Users,
+  HeartHandshake,
   Target,
+  Building2,
+  ArrowRight,
   Sparkles,
+  Quote,
 } from 'lucide-react';
 
 export default function AboutPage() {
   const { t } = useLanguage();
   const shouldReduceMotion = useReducedMotion();
 
-  // Core brand values
-  const values = [
-    {
-      icon: Compass,
-      title: 'Vision',
-      desc: 'Forward-thinking architectural design and strategic location planning that anticipate future urban growth.',
-    },
+  const pillars = [
     {
       icon: ShieldCheck,
-      title: 'Integrity',
-      desc: 'Uncompromising legal transparency, 100% clear titles, and complete honesty in every customer transaction.',
-    },
-    {
-      icon: Award,
-      title: 'Trust',
-      desc: 'Over 15 years of proven excellence, delivering premium properties on time to hundreds of satisfied families.',
+      title: t.about.pillar1Title,
+      desc: t.about.pillar1Desc,
+      tag: '01',
     },
     {
       icon: TrendingUp,
-      title: 'Growth',
-      desc: 'Maximizing investment returns and long-term capital appreciation for property owners and investors.',
+      title: t.about.pillar2Title,
+      desc: t.about.pillar2Desc,
+      tag: '02',
     },
-  ];
-
-  // Highlights for Why LAND POWER
-  const highlights = [
-    'RERA Approved & Clear Legal Titles',
-    'Prime Strategic Locations with High Growth Potential',
-    'Luxury Architecture & High-End Amenities',
-    'Transparent Pricing with Zero Hidden Costs',
-    'Dedicated Customer Support & End-to-End Assistance',
+    {
+      icon: Users,
+      title: t.about.pillar3Title,
+      desc: t.about.pillar3Desc,
+      tag: '03',
+    },
+    {
+      icon: HeartHandshake,
+      title: t.about.pillar4Title,
+      desc: t.about.pillar4Desc,
+      tag: '04',
+    },
   ];
 
   return (
@@ -70,43 +62,42 @@ export default function AboutPage() {
         {/* =========================================================================
             SECTION 1: About Hero / Page Header
             ========================================================================= */}
-        <section className="relative py-24 md:py-32 px-4 md:px-8 bg-[#034F90] text-[#fcf9f8] overflow-hidden">
+        <section className="relative py-20 md:py-28 px-4 md:px-8 bg-[#034F90] text-[#fcf9f8] overflow-hidden">
           {/* Background Image with Dark Luxury Gradient Overlay */}
           <div className="absolute inset-0 z-0 opacity-25">
             <Image
               src="/assets/hero/hero.png"
-              alt="LAND POWER Luxury Estate"
+              alt="LAND POWER - A Real Estate Partner with a Human Soul"
               fill
               unoptimized
               className="object-cover object-center"
               priority
             />
           </div>
-          <div className="absolute inset-0 bg-gradient-to-t from-[#034F90] via-[#034F90]/80 to-transparent z-0" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#034F90] via-[#034F90]/85 to-transparent z-0" />
 
           <div className="max-w-[1280px] mx-auto relative z-10 text-center">
             <AnimatedSection direction="up">
-              <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#ffdea5]/20 border border-[#ffdea5]/40 mb-6">
+              <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#ffdea5]/20 border border-[#ffdea5]/40 mb-6 backdrop-blur-sm">
                 <Sparkles className="w-4 h-4 text-[#ffdea5]" />
                 <span className="font-sans text-xs uppercase tracking-widest text-[#ffdea5] font-semibold">
                   ABOUT LAND POWER
                 </span>
               </div>
 
-              <h1 className="font-serif text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-6 leading-tight max-w-4xl mx-auto">
-                Building Better Lives, <br />
-                <span className="text-[#ffdea5]">Every Day</span>
+              <h1 className="font-serif text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight max-w-4xl mx-auto">
+                {t.about.heading}
               </h1>
 
-              <p className="font-sans text-base sm:text-lg md:text-xl text-[#e5e2e1]/90 max-w-2xl mx-auto leading-relaxed">
-                Transformative real estate developments built on trust, architectural innovation, and uncompromising quality standards across South India.
+              <p className="font-sans text-base sm:text-lg md:text-xl text-[#e5e2e1]/95 max-w-3xl mx-auto leading-relaxed">
+                {t.about.subtitle}
               </p>
             </AnimatedSection>
           </div>
         </section>
 
         {/* =========================================================================
-            SECTION 2: Our Story
+            SECTION 2: Foundation & Overview
             ========================================================================= */}
         <section className="py-20 md:py-28 px-4 md:px-8 bg-[#fcf9f8]">
           <div className="max-w-[1280px] mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
@@ -115,33 +106,37 @@ export default function AboutPage() {
               <div className="flex items-center gap-2 mb-4">
                 <div className="w-8 h-[1px] bg-[#775a19]" />
                 <span className="font-sans text-xs uppercase tracking-widest text-[#775a19] font-semibold">
-                  OUR JOURNEY
+                  OUR PHILOSOPHY
                 </span>
               </div>
 
               <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl text-[#034F90] font-bold mb-6 leading-tight">
-                Crafting Premier Landmarks Since 2011
+                {t.about.heading}
               </h2>
 
-              <p className="font-sans text-base text-[#43474e] mb-6 leading-relaxed">
-                Founded with a visionary commitment to elevate real estate benchmarks, <strong>LAND POWER</strong> has evolved from a boutique property developer into a premier real estate powerhouse known for luxury open plots, bespoke villas, and gated communities.
+              <p className="font-sans text-base sm:text-lg text-[#775a19] font-semibold mb-6 leading-relaxed">
+                {t.about.subtitle}
               </p>
 
               <p className="font-sans text-base text-[#43474e] mb-6 leading-relaxed">
-                Our foundation rests upon total transparency, legal clarity, and selecting high-potential growth corridors. Every project we undertake is meticulously curated to provide families with security, prosperity, and an elevated lifestyle.
+                {t.about.para1}
               </p>
 
-              <div className="grid grid-cols-2 gap-6 pt-6 border-t border-[#e5e2e1] mt-6">
+              <p className="font-sans text-base text-[#43474e] mb-8 leading-relaxed">
+                {t.about.para2}
+              </p>
+
+              <div className="grid grid-cols-2 gap-6 pt-6 border-t border-[#e5e2e1]">
                 <div>
-                  <h3 className="font-serif text-3xl font-bold text-[#034F90]">15+</h3>
+                  <h3 className="font-serif text-3xl sm:text-4xl font-bold text-[#034F90]">20+</h3>
                   <p className="font-sans text-xs text-[#775a19] uppercase tracking-wider font-semibold mt-1">
-                    Years of Industry Leadership
+                    {t.about.yearsExcellence}
                   </p>
                 </div>
                 <div>
-                  <h3 className="font-serif text-3xl font-bold text-[#034F90]">100%</h3>
+                  <h3 className="font-serif text-3xl sm:text-4xl font-bold text-[#034F90]">100%</h3>
                   <p className="font-sans text-xs text-[#775a19] uppercase tracking-wider font-semibold mt-1">
-                    Clear Legal Title Guarantee
+                    Clear Title Guarantee
                   </p>
                 </div>
               </div>
@@ -149,18 +144,20 @@ export default function AboutPage() {
 
             {/* Story Image */}
             <AnimatedSection delay={0.2} direction="up">
-              <div className="relative aspect-[4/3] sm:aspect-[4/3] rounded-2xl overflow-hidden shadow-2xl group border border-[#e5e2e1]">
+              <div className="relative aspect-[4/5] rounded-2xl overflow-hidden shadow-2xl group border border-[#e5e2e1]">
                 <Image
                   src="/assets/about/about.png"
-                  alt="LAND POWER Luxury Architecture"
+                  alt="LAND POWER - A Real Estate Partner with a Human Soul"
                   fill
                   unoptimized
-                  className="object-cover transition-transform duration-700 group-hover:scale-105"
+                  className="object-cover transition-transform duration-700 group-hover:scale-[1.03]"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-[#034F90]/60 via-transparent to-transparent opacity-60" />
                 <div className="absolute bottom-6 left-6 right-6 text-white">
-                  <span className="font-serif text-lg font-bold block">Uncompromising Quality</span>
-                  <span className="font-sans text-xs text-[#ffdea5] uppercase tracking-widest">Master-Planned Communities</span>
+                  <span className="font-serif text-lg font-bold block">LAND POWER</span>
+                  <span className="font-sans text-xs text-[#ffdea5] uppercase tracking-widest">
+                    A Safe Piece of Earth Rooted in Peace & Trust
+                  </span>
                 </div>
               </div>
             </AnimatedSection>
@@ -181,7 +178,7 @@ export default function AboutPage() {
                 <div className="w-8 h-[1px] bg-[#775a19]" />
               </div>
               <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl text-[#034F90] font-bold">
-                Guided by Purpose & Excellence
+                Our Vision & Mission
               </h2>
             </AnimatedSection>
 
@@ -197,10 +194,10 @@ export default function AboutPage() {
                       <Target className="w-7 h-7 text-[#034F90]" />
                     </div>
                     <h3 className="font-serif text-2xl font-bold text-[#034F90] mb-4">
-                      Our Vision
+                      {t.about.visionTitle}
                     </h3>
                     <p className="font-sans text-base text-[#43474e] leading-relaxed">
-                      To redefine luxury real estate across India by delivering world-class, sustainable, and iconic architectural landmarks that inspire generations and foster prosperous communities.
+                      {t.about.visionDesc}
                     </p>
                   </div>
                   <div className="pt-6 mt-6 border-t border-[#e5e2e1] text-xs font-semibold text-[#034F90] uppercase tracking-wider">
@@ -220,10 +217,10 @@ export default function AboutPage() {
                       <Building2 className="w-7 h-7 text-[#034F90]" />
                     </div>
                     <h3 className="font-serif text-2xl font-bold text-[#034F90] mb-4">
-                      Our Mission
+                      {t.about.missionTitle}
                     </h3>
                     <p className="font-sans text-base text-[#43474e] leading-relaxed">
-                      To empower families and investors with complete legal clarity, prime location advantages, premium design, and transparent dealings in every footprint we build.
+                      {t.about.missionDesc}
                     </p>
                   </div>
                   <div className="pt-6 mt-6 border-t border-[#e5e2e1] text-xs font-semibold text-[#034F90] uppercase tracking-wider">
@@ -236,19 +233,19 @@ export default function AboutPage() {
         </section>
 
         {/* =========================================================================
-            SECTION 4: Leadership (Managing Director)
+            SECTION 4: Leadership — The Person Behind Our Principles
             ========================================================================= */}
-        <section className="py-20 md:py-28 px-4 md:px-8 bg-[#034F90] text-[#fcf9f8] relative overflow-hidden">
+        <section className="py-24 md:py-36 px-4 md:px-8 bg-[#034F90] text-[#fcf9f8] relative overflow-hidden">
           <div className="max-w-[1280px] mx-auto relative z-10">
-            <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-20">
+            <div className="flex flex-col lg:flex-row items-center gap-14 lg:gap-20">
               {/* Director Image */}
-              <AnimatedSection direction="up" className="lg:w-1/2 w-full">
-                <div className="relative">
+              <AnimatedSection direction="up" className="lg:w-1/2 w-full flex justify-center">
+                <div className="relative w-full max-w-md sm:max-w-lg">
                   <div className="absolute inset-0 bg-[#ffdea5]/20 rounded-2xl transform -translate-x-4 -translate-y-4" />
                   <div className="relative rounded-2xl overflow-hidden shadow-2xl aspect-[4/5] w-full border border-white/10 group">
                     <Image
-                      src="/assets/founder/managing-director.png"
-                      alt="Rama Krishna Rompivalasa - Managing Director of LAND POWER"
+                      src="/assets/founder/79116.png"
+                      alt="Ramakrishna Rompivalasa - Managing Director & Designated Partner, LAND POWER"
                       fill
                       unoptimized
                       className="object-cover object-top transition-transform duration-700 group-hover:scale-105"
@@ -262,35 +259,47 @@ export default function AboutPage() {
                 <div className="flex items-center gap-2 mb-4">
                   <div className="w-8 h-[1px] bg-[#ffdea5]" />
                   <span className="font-sans text-xs uppercase tracking-widest text-[#ffdea5] font-semibold">
-                    MEET OUR LEADERSHIP
+                    LEADERSHIP PROFILE
                   </span>
                 </div>
 
-                <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl text-white font-bold mb-2">
-                  Rama Krishna Rompivalasa
+                <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl text-white font-bold mb-3">
+                  {t.about.leaderHeading}
                 </h2>
 
-                <p className="font-sans text-sm text-[#ffdea5] mb-6 uppercase tracking-widest font-semibold">
-                  Managing Director
+                <h3 className="font-serif text-2xl sm:text-3xl text-[#ffdea5] font-bold mb-2">
+                  {t.leadership.name}
+                </h3>
+
+                <p className="font-sans text-sm text-[#ffdea5]/90 mb-6 uppercase tracking-widest font-semibold">
+                  {t.leadership.role}
                 </p>
 
-                <p className="font-sans text-base sm:text-lg text-[#e5e2e1]/90 mb-6 leading-relaxed italic">
-                  &ldquo;At LAND POWER, we do not merely construct buildings — we craft enduring legacies built on trust, innovation, and an unwavering commitment to quality.&rdquo;
+                {/* Quote Box */}
+                <div className="bg-white/10 p-6 rounded-xl border border-white/15 mb-6 relative">
+                  <Quote className="w-8 h-8 text-[#ffdea5]/40 absolute top-4 right-4" />
+                  <p className="font-serif text-base sm:text-lg text-[#ffdea5] italic leading-relaxed">
+                    {t.about.leaderQuote}
+                  </p>
+                </div>
+
+                <p className="font-sans text-base text-[#e5e2e1]/90 mb-8 leading-relaxed">
+                  {t.leadership.description}
                 </p>
 
-                <p className="font-sans text-base text-[#e5e2e1]/80 mb-8 leading-relaxed">
-                  Under the strategic leadership of Rama Krishna Rompivalasa, LAND POWER has pioneered customer-centric real estate development, delivering transparent, high-appreciation properties to hundreds of home buyers and investors.
-                </p>
-
-                <div className="flex items-center gap-3 pt-6 border-t border-white/10">
-                  <div className="w-10 h-10 rounded-full bg-[#ffdea5]/20 flex items-center justify-center text-[#ffdea5]">
-                    <Mail className="w-5 h-5" />
+                {/* Core Leadership Badges */}
+                <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-6 border-t border-white/10">
+                  <div className="bg-white/5 border border-white/10 p-3 rounded-lg text-center">
+                    <span className="font-serif text-sm font-bold text-white block">{t.leadership.vision}</span>
                   </div>
-                  <div>
-                    <span className="font-sans text-xs text-[#e5e2e1]/60 block uppercase tracking-wider">Direct Email</span>
-                    <a href="mailto:rk@landpower.in" className="font-sans text-sm font-semibold text-[#ffdea5] hover:underline">
-                      rk@landpower.in
-                    </a>
+                  <div className="bg-white/5 border border-white/10 p-3 rounded-lg text-center">
+                    <span className="font-serif text-sm font-bold text-white block">{t.leadership.integrity}</span>
+                  </div>
+                  <div className="bg-white/5 border border-white/10 p-3 rounded-lg text-center">
+                    <span className="font-serif text-sm font-bold text-white block">{t.leadership.trust}</span>
+                  </div>
+                  <div className="bg-white/5 border border-white/10 p-3 rounded-lg text-center">
+                    <span className="font-serif text-sm font-bold text-white block">{t.leadership.growth}</span>
                   </div>
                 </div>
               </AnimatedSection>
@@ -299,7 +308,68 @@ export default function AboutPage() {
         </section>
 
         {/* =========================================================================
-            SECTION 5: What We Believe In (Brand Values)
+            SECTION 5: Standalone Strategic Advisory — M. Jagannadha Rao
+            ========================================================================= */}
+        <section className="py-12 md:py-16 px-4 md:px-8 bg-[#f6f3f2] relative overflow-hidden border-y border-[#e5e2e1]">
+          <div className="max-w-[1280px] mx-auto">
+            <div className="bg-white rounded-2xl sm:rounded-3xl p-6 sm:p-8 lg:p-8 border border-[#e5e2e1] shadow-xl">
+              <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-10 items-center">
+                {/* Left: Compact Rectangular Portrait Image */}
+                <AnimatedSection direction="up" className="lg:col-span-4 w-full flex justify-center">
+                  <div className="relative w-full max-w-[220px] sm:max-w-[250px] aspect-[4/5] rounded-xl sm:rounded-2xl overflow-hidden shadow-lg border-2 border-[#034F90]/15 group bg-[#023b6d] shrink-0">
+                    <Image
+                      src="/assets/CUSTOMERS/JAGANNADHA RAO.jpg"
+                      alt="M. Jagannadha Rao - Chief Strategy Advisor, Land Power"
+                      fill
+                      unoptimized
+                      className="object-cover object-top transition-transform duration-700 group-hover:scale-105"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#034F90]/35 via-transparent to-transparent opacity-30 pointer-events-none" />
+                  </div>
+                </AnimatedSection>
+
+                {/* Right: Advisor Information */}
+                <AnimatedSection delay={0.2} direction="up" className="lg:col-span-8 flex flex-col justify-center text-center lg:text-left">
+                  <div className="flex items-center justify-center lg:justify-start gap-2 mb-2">
+                    <div className="w-6 h-[1px] bg-[#775a19]" />
+                    <span className="font-sans text-[11px] sm:text-xs uppercase tracking-widest text-[#775a19] font-bold">
+                      CHIEF STRATEGY ADVISOR
+                    </span>
+                  </div>
+
+                  <h2 className="font-serif text-2xl sm:text-3xl lg:text-4xl text-[#034F90] font-bold mb-1.5 leading-tight">
+                    M. Jagannadha Rao
+                  </h2>
+
+                  <div className="space-y-0.5 mb-3">
+                    <p className="font-sans text-sm sm:text-base text-[#43474e] font-semibold">
+                      Former Vice Chancellor
+                    </p>
+                    <p className="font-sans text-xs sm:text-sm text-[#775a19] font-medium">
+                      Adikavi Nannayya University
+                    </p>
+                  </div>
+
+                  <div className="w-full h-[1px] bg-[#e5e2e1] my-2.5" />
+
+                  <div className="inline-flex self-center lg:self-start bg-[#034F90]/10 border border-[#034F90]/20 px-4 py-1.5 rounded-lg mb-3">
+                    <p className="font-sans text-xs sm:text-sm font-bold text-[#034F90] uppercase tracking-wider">
+                      Chief Strategy Advisor, Land Power
+                    </p>
+                  </div>
+
+                  {/* Advisor Insight Paragraph */}
+                  <p className="font-sans text-xs sm:text-sm md:text-base text-[#43474e] leading-relaxed max-w-2xl">
+                    M. Jagannadha Rao brings extensive academic leadership and strategic insight to LAND POWER. His experience and guidance support our commitment to responsible development, long-term value creation, and decisions grounded in integrity and community.
+                  </p>
+                </AnimatedSection>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* =========================================================================
+            SECTION 6: The Four Pillars Behind Every Decision
             ========================================================================= */}
         <section className="py-20 md:py-28 px-4 md:px-8 bg-[#fcf9f8]">
           <div className="max-w-[1280px] mx-auto">
@@ -307,33 +377,36 @@ export default function AboutPage() {
               <div className="inline-flex items-center gap-2 mb-3">
                 <div className="w-8 h-[1px] bg-[#775a19]" />
                 <span className="font-sans text-xs uppercase tracking-widest text-[#775a19] font-semibold">
-                  OUR PHILOSOPHY
+                  CORE VALUES
                 </span>
                 <div className="w-8 h-[1px] bg-[#775a19]" />
               </div>
               <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl text-[#034F90] font-bold">
-                What We Believe In
+                {t.about.pillarsTitle}
               </h2>
             </AnimatedSection>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-              {values.map((val, idx) => {
-                const Icon = val.icon;
+              {pillars.map((pillar, idx) => {
+                const Icon = pillar.icon;
                 return (
                   <AnimatedSection key={idx} delay={idx * 0.1} direction="up">
                     <motion.div
                       whileHover={shouldReduceMotion ? {} : { y: -6 }}
-                      className="bg-white p-8 rounded-xl border border-[#e5e2e1] hover:border-[#034F90]/40 hover:shadow-xl transition-all duration-300 h-full flex flex-col justify-between"
+                      className="bg-white p-8 rounded-xl border border-[#e5e2e1] hover:border-[#034F90]/40 hover:shadow-xl transition-all duration-300 h-full flex flex-col justify-between group"
                     >
                       <div>
-                        <div className="w-12 h-12 rounded-lg bg-[#034F90]/10 flex items-center justify-center mb-6">
-                          <Icon className="w-6 h-6 text-[#034F90]" />
+                        <div className="flex items-center justify-between mb-6">
+                          <div className="w-12 h-12 rounded-xl bg-[#034F90]/10 flex items-center justify-center text-[#034F90] group-hover:bg-[#034F90] group-hover:text-white transition-colors duration-300">
+                            <Icon className="w-6 h-6" />
+                          </div>
+                          <span className="font-serif text-lg font-bold text-[#775a19]/40">{pillar.tag}</span>
                         </div>
                         <h3 className="font-serif text-xl font-bold text-[#034F90] mb-3">
-                          {val.title}
+                          {pillar.title}
                         </h3>
                         <p className="font-sans text-sm text-[#43474e] leading-relaxed">
-                          {val.desc}
+                          {pillar.desc}
                         </p>
                       </div>
                     </motion.div>
@@ -345,49 +418,52 @@ export default function AboutPage() {
         </section>
 
         {/* =========================================================================
-            SECTION 6: Why LAND POWER & CTA
+            SECTION 6: CTA Box
             ========================================================================= */}
         <section className="py-20 md:py-28 px-4 md:px-8 bg-[#f6f3f2]">
           <div className="max-w-[1280px] mx-auto bg-white rounded-3xl p-8 sm:p-12 md:p-16 border border-[#e5e2e1] shadow-2xl grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            {/* Highlights */}
+            {/* Left Info */}
             <AnimatedSection direction="up">
               <div className="flex items-center gap-2 mb-4">
                 <div className="w-8 h-[1px] bg-[#775a19]" />
                 <span className="font-sans text-xs uppercase tracking-widest text-[#775a19] font-semibold">
-                  THE LAND POWER PROMISE
+                  EXPERIENCE LAND POWER
                 </span>
               </div>
 
-              <h2 className="font-serif text-3xl sm:text-4xl text-[#034F90] font-bold mb-6 leading-tight">
-                Why Choose LAND POWER For Your Next Property?
+              <h2 className="font-serif text-3xl sm:text-4xl text-[#034F90] font-bold mb-4 leading-tight">
+                Ready to Find Your Safe Piece of Earth?
               </h2>
 
-              <ul className="space-y-4 mb-8">
-                {highlights.map((item, idx) => (
-                  <li key={idx} className="flex items-center gap-3 text-sm sm:text-base text-[#43474e] font-sans">
-                    <CheckCircle2 className="w-5 h-5 text-[#034F90] shrink-0" />
-                    <span>{item}</span>
-                  </li>
-                ))}
-              </ul>
+              <p className="font-sans text-base text-[#43474e] leading-relaxed">
+                Connect with our advisors to receive transparent documentation, layout approvals, and schedule an on-site visit in Visakhapatnam.
+              </p>
             </AnimatedSection>
 
-            {/* CTA Box */}
+            {/* Right Buttons */}
             <AnimatedSection delay={0.2} direction="up" className="bg-[#034F90] p-8 sm:p-10 rounded-2xl text-white text-center flex flex-col items-center justify-center">
               <Users className="w-12 h-12 text-[#ffdea5] mb-4" />
               <h3 className="font-serif text-2xl sm:text-3xl font-bold mb-3">
-                Ready to Find Your Ideal Space?
+                Speak with Our Experts
               </h3>
               <p className="font-sans text-sm text-[#e5e2e1]/80 mb-8 max-w-sm">
-                Speak directly with our real estate experts today and explore exclusive ongoing and upcoming projects.
+                Explore our ongoing and upcoming developments across Visakhapatnam.
               </p>
-              <Link
-                href="/#contact"
-                className="inline-flex items-center gap-2 px-8 py-4 bg-[#fed488] text-[#034F90] hover:bg-[#e9c176] font-sans text-xs font-bold uppercase tracking-widest rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 group"
-              >
-                <span>GET IN TOUCH</span>
-                <ArrowRight className="w-4 h-4 text-[#034F90] transition-transform duration-300 group-hover:translate-x-1" />
-              </Link>
+              <div className="flex flex-col sm:flex-row gap-4 w-full justify-center">
+                <Link
+                  href="/#projects"
+                  className="inline-flex items-center justify-center gap-2 px-6 py-3.5 bg-[#fed488] text-[#034F90] hover:bg-[#e9c176] font-sans text-xs font-bold uppercase tracking-widest rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 group"
+                >
+                  <span>EXPLORE PROJECTS</span>
+                  <ArrowRight className="w-4 h-4 text-[#034F90] transition-transform duration-300 group-hover:translate-x-1" />
+                </Link>
+                <Link
+                  href="/#contact"
+                  className="inline-flex items-center justify-center gap-2 px-6 py-3.5 bg-white/10 hover:bg-white/20 border border-white/20 text-white font-sans text-xs font-bold uppercase tracking-widest rounded-lg transition-all duration-300"
+                >
+                  <span>CONTACT US</span>
+                </Link>
+              </div>
             </AnimatedSection>
           </div>
         </section>

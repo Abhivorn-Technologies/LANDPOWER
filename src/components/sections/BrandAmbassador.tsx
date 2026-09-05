@@ -9,7 +9,7 @@ export const BrandAmbassador: React.FC = () => {
   const { t } = useLanguage();
 
   return (
-    <section className="py-20 md:py-28 px-4 md:px-8 bg-[#f6f3f2] relative overflow-hidden">
+    <section id="ambassador" className="py-20 md:py-28 px-4 md:px-8 bg-[#f6f3f2] relative overflow-hidden">
       {/* Decorative Background */}
       <div className="absolute top-0 right-0 w-1/2 h-full bg-[#034F90]/5 skew-x-12 translate-x-32 hidden lg:block" />
       <div className="absolute bottom-0 left-0 w-64 h-64 border border-[#034F90]/10 rounded-full -translate-x-1/2 translate-y-1/2" />
@@ -20,24 +20,24 @@ export const BrandAmbassador: React.FC = () => {
           <AnimatedSection direction="up" delay={0.2} className="lg:w-1/2">
             <div className="flex items-center gap-2 mb-4">
               <div className="w-8 h-[1px] bg-[#775a19]" />
-              <span className="font-sans text-sm sm:text-base uppercase tracking-widest text-[#775a19] font-bold">
+              <span className="font-sans text-xs uppercase tracking-widest text-[#775a19] font-bold">
                 {t.ambassador.eyebrow}
               </span>
             </div>
 
             <h2 className="font-serif text-4xl sm:text-5xl md:text-6xl text-[#034F90] font-bold mb-3 leading-tight">
-              Mishti Chakraborty
+              {t.ambassador.name}
             </h2>
 
-            <p className="font-sans text-base sm:text-lg text-[#775a19] mb-8 uppercase tracking-widest font-semibold">
+            <p className="font-sans text-sm sm:text-base text-[#775a19] mb-8 uppercase tracking-widest font-semibold">
               {t.ambassador.role}
             </p>
 
-            <p className="font-sans text-lg sm:text-xl md:text-2xl text-[#034F90] mb-6 leading-relaxed font-medium">
+            <p className="font-sans text-base sm:text-lg md:text-xl text-[#034F90] mb-6 leading-relaxed font-medium">
               {t.ambassador.description1}
             </p>
 
-            <p className="font-sans text-base sm:text-lg md:text-xl text-[#43474e] mb-8 leading-relaxed">
+            <p className="font-sans text-sm sm:text-base text-[#43474e] mb-8 leading-relaxed">
               {t.ambassador.description2}
             </p>
           </AnimatedSection>

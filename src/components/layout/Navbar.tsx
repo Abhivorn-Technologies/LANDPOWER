@@ -26,7 +26,7 @@ export const Navbar: React.FC = () => {
         return;
       }
 
-      const sections = ['home', 'about', 'services', 'projects', 'why-us', 'testimonials', 'contact'];
+      const sections = ['home', 'about', 'services', 'projects', 'gallery', 'contact'];
       const scrollPosition = window.scrollY + 100;
 
       for (const section of sections) {
@@ -46,18 +46,16 @@ export const Navbar: React.FC = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, [pathname]);
 
-  // Exact 7 Navigation links pointing to main page sections
+  // Exactly 6 Navigation links
   const navLinks = [
     { href: '/', label: t.nav.home, id: 'home' },
-    { href: '/#about', label: t.nav.about, id: 'about' },
+    { href: '/about', label: t.nav.about, id: 'about' },
     { href: '/#services', label: t.nav.services, id: 'services' },
     { href: '/#projects', label: t.nav.projects, id: 'projects' },
-    { href: '/#why-us', label: t.nav.whyUs, id: 'why-us' },
-    { href: '/#testimonials', label: t.nav.testimonials, id: 'testimonials' },
+    { href: '/#gallery', label: t.nav.gallery, id: 'gallery' },
     { href: '/#contact', label: t.nav.contact, id: 'contact' },
   ];
 
-  // Trigger smooth wave animation across all nav links when any link is clicked
   const handleNavClick = (index: number) => {
     setClickedNavIndex(index);
     setTimeout(() => {
@@ -65,19 +63,28 @@ export const Navbar: React.FC = () => {
     }, 650);
   };
 
-  // Home link handler: if already on homepage, scroll to top smoothly instead of
-  // relying on /#home hash which can fail before hydration completes
   const handleHomeClick = useCallback(
     (e: React.MouseEvent<HTMLAnchorElement>) => {
       if (pathname === '/') {
         e.preventDefault();
         window.scrollTo({ top: 0, behavior: 'smooth' });
       }
-      // For other pages, let Next.js navigate to '/' normally
       handleNavClick(0);
       setMobileMenuOpen(false);
     },
-    [pathname] // eslint-disable-line react-hooks/exhaustive-deps
+    [pathname]
+  );
+
+  const handleAboutClick = useCallback(
+    (e: React.MouseEvent<HTMLAnchorElement>) => {
+      if (pathname === '/about') {
+        e.preventDefault();
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+      handleNavClick(1);
+      setMobileMenuOpen(false);
+    },
+    [pathname]
   );
 
   return (
@@ -90,7 +97,7 @@ export const Navbar: React.FC = () => {
     >
       <div className="max-w-[1280px] mx-auto px-4 md:px-8 flex items-center justify-between h-20 sm:h-24">
         {/* =========================================================================
-            LEFT: Larger Prominent Brand Logo
+            LEFT: Brand Logo
             ========================================================================= */}
         <Link href="/" className="flex items-center gap-2 group shrink-0 py-1">
           <div className="relative h-14 sm:h-16 md:h-18 w-48 sm:w-56 md:w-64 transition-transform duration-300 group-hover:scale-[1.02]">
@@ -106,15 +113,14 @@ export const Navbar: React.FC = () => {
         </Link>
 
         {/* =========================================================================
-            CENTER: 7 Navigation Links with Interactive Wave Animation & Underline
+            CENTER: Exactly 6 Centered Navigation Links
             ========================================================================= */}
-        <nav className="hidden xl:flex items-center space-x-6">
+        <nav className="hidden lg:flex items-center space-x-6 xl:space-x-8">
           {navLinks.map((link, index) => {
             const isActive =
               (pathname === '/about' && link.id === 'about') ||
               (pathname === '/' && activeSection === link.id);
 
-            // Compute wave animation stagger delay based on distance from clicked link
             const waveDistance = clickedNavIndex !== null ? Math.abs(index - clickedNavIndex) : 0;
             const waveDelay = waveDistance * 0.045;
 
@@ -134,7 +140,13 @@ export const Navbar: React.FC = () => {
               >
                 <Link
                   href={link.href}
-                  onClick={link.id === 'home' ? handleHomeClick : () => handleNavClick(index)}
+                  onClick={
+                    link.id === 'home'
+                      ? handleHomeClick
+                      : link.id === 'about'
+                      ? handleAboutClick
+                      : () => handleNavClick(index)
+                  }
                   className={`relative font-sans text-sm font-semibold tracking-wider transition-colors duration-200 py-2 inline-block ${
                     isActive ? 'text-[#034F90]' : 'text-[#034F90]/80 hover:text-[#034F90]'
                   }`}
@@ -158,7 +170,7 @@ export const Navbar: React.FC = () => {
         </nav>
 
         {/* =========================================================================
-            RIGHT: Language Selector & Phone Number (WhatsApp Removed)
+            RIGHT: Language Translator & Contact Number
             ========================================================================= */}
         <div className="flex items-center space-x-3 sm:space-x-4">
           {/* Language Selector (English ▼) */}
@@ -170,17 +182,17 @@ export const Navbar: React.FC = () => {
           <motion.a
             whileHover={{ y: -2, scale: 1.03 }}
             whileTap={{ scale: 0.97 }}
-            href="tel:+919010214100"
+            href="tel:+919866387871"
             className="hidden sm:flex items-center gap-2 text-xs font-bold text-[#034F90] border border-[#034F90]/30 px-4 py-2.5 rounded-full hover:bg-[#034F90] hover:text-white shadow-sm hover:shadow transition-all duration-300"
           >
             <Phone className="w-3.5 h-3.5 text-[#034F90] group-hover:text-white" />
-            <span>+91 90102 14100</span>
+            <span>+91 98663 87871</span>
           </motion.a>
 
           {/* Mobile Menu Toggle Button */}
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="xl:hidden text-[#034F90] p-1.5 focus:outline-none"
+            className="lg:hidden text-[#034F90] p-1.5 focus:outline-none"
             aria-label="Toggle Navigation Menu"
           >
             {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
@@ -189,19 +201,25 @@ export const Navbar: React.FC = () => {
       </div>
 
       {/* =========================================================================
-          MOBILE DRAWER MENU
+          MOBILE / TABLET DRAWER MENU (Exact 6 Links)
           ========================================================================= */}
       {mobileMenuOpen && (
-        <div className="xl:hidden bg-white border-b border-[#e5e2e1] px-6 py-6 shadow-xl space-y-4 animate-in slide-in-from-top-4 duration-200">
+        <div className="lg:hidden bg-white border-b border-[#e5e2e1] px-6 py-6 shadow-xl space-y-4 animate-in slide-in-from-top-4 duration-200">
           <nav className="flex flex-col space-y-3">
             {navLinks.map((link, index) => (
               <Link
                 key={link.id}
                 href={link.href}
-                onClick={link.id === 'home' ? handleHomeClick : () => {
-                  handleNavClick(index);
-                  setMobileMenuOpen(false);
-                }}
+                onClick={
+                  link.id === 'home'
+                    ? handleHomeClick
+                    : link.id === 'about'
+                    ? handleAboutClick
+                    : () => {
+                        handleNavClick(index);
+                        setMobileMenuOpen(false);
+                      }
+                }
                 className="font-sans text-base font-semibold text-[#034F90] hover:text-[#023b6d] py-1 border-b border-gray-100"
               >
                 {link.label}
@@ -210,11 +228,11 @@ export const Navbar: React.FC = () => {
           </nav>
           <div className="pt-2">
             <a
-              href="tel:+919010214100"
+              href="tel:+919866387871"
               className="flex items-center justify-center gap-2 w-full text-sm font-bold text-white bg-[#034F90] hover:bg-[#023b6d] px-4 py-3 rounded-full shadow transition-all duration-300"
             >
               <Phone className="w-4 h-4 text-white" />
-              <span>+91 90102 14100</span>
+              <span>+91 98663 87871</span>
             </a>
           </div>
         </div>

@@ -5,6 +5,7 @@ import Image from 'next/image';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { useLanguage } from '@/i18n/LanguageContext';
 import { useReducedMotion } from '@/hooks/useReducedMotion';
+import { MessageCircle, ArrowRight } from 'lucide-react';
 
 export const Hero: React.FC = () => {
   const { t } = useLanguage();
@@ -19,11 +20,15 @@ export const Hero: React.FC = () => {
 
   const parallaxY = useTransform(scrollYProgress, [0, 1], ['0%', '18%']);
 
+  const WHATSAPP_URL =
+    'https://wa.me/919866387871?text=' +
+    encodeURIComponent('Hello LAND POWER, I would like more information about available plots and homes.');
+
   return (
     <section
       ref={containerRef}
       id="home"
-      className="relative h-[88vh] min-h-[650px] flex items-center justify-center overflow-hidden"
+      className="relative min-h-[88vh] py-12 md:py-16 flex items-center justify-center overflow-hidden"
     >
       {/* =========================================================================
           LAYER 1: Background Image Container with Parallax & Slow Zoom-In Animation
@@ -51,7 +56,7 @@ export const Hero: React.FC = () => {
         >
           <Image
             src="/assets/hero/hero.png"
-            alt="LAND POWER Luxury Estate"
+            alt="LAND POWER - A Safe Piece of Earth Rooted in Peace & Trust"
             fill
             unoptimized
             sizes="100vw"
@@ -68,13 +73,12 @@ export const Hero: React.FC = () => {
         className="absolute inset-0 z-10 pointer-events-none"
         style={{
           background:
-            'linear-gradient(180deg, rgba(3, 79, 144, 0.32) 0%, rgba(0, 6, 19, 0.18) 50%, rgba(2, 59, 109, 0.48) 100%)',
+            'linear-gradient(180deg, rgba(3, 79, 144, 0.38) 0%, rgba(0, 6, 19, 0.22) 50%, rgba(2, 59, 109, 0.52) 100%)',
         }}
       />
 
       {/* =========================================================================
           LAYER 3: Warm Sunset Orange/Golden Gradient Mask Overlay (Top & Left focus)
-          Fades out into transparent towards center and right to preserve villa view
           ========================================================================= */}
       <div
         className="absolute inset-0 z-20 pointer-events-none mix-blend-normal"
@@ -87,23 +91,22 @@ export const Hero: React.FC = () => {
       />
 
       {/* =========================================================================
-          LAYER 4: Hero Foreground Content with Larger Typography
+          LAYER 4: Hero Foreground Content
           ========================================================================= */}
-      <div className="relative z-30 text-center px-4 max-w-5xl mx-auto flex flex-col items-center -mt-8 md:-mt-10">
+      <div className="relative z-30 text-center px-4 max-w-5xl mx-auto flex flex-col items-center -mt-6 md:-mt-8">
         {/* 1. Top Badge */}
         <motion.span
           initial={shouldReduceMotion ? {} : { opacity: 0, y: 20 }}
           animate={shouldReduceMotion ? {} : { opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
-          whileHover={{ scale: 1.05 }}
-          className="inline-block px-5 py-2 mb-6 border border-[#ffdea5]/60 rounded-full font-sans text-sm sm:text-base text-[#ffdea5] uppercase tracking-widest bg-[#034F90]/50 backdrop-blur-md shadow-md transition-all duration-300 cursor-default font-semibold"
+          whileHover={{ scale: 1.03 }}
+          className="inline-block px-5 py-2 mb-6 border border-[#ffdea5]/60 rounded-full font-sans text-xs sm:text-sm text-[#ffdea5] uppercase tracking-widest bg-[#034F90]/60 backdrop-blur-md shadow-md transition-all duration-300 cursor-default font-semibold"
         >
           {t.hero.badge}
         </motion.span>
 
-        {/* 2. Main Heading with Larger Prominent Font Sizes */}
+        {/* 2. Main Heading */}
         <h1 className="font-serif text-5xl sm:text-6xl md:text-7xl lg:text-[4.5rem] text-[#fcf9f8] mb-6 leading-[1.1] font-bold">
-          {/* Line 1: BUILDING YOUR */}
           <motion.span
             initial={shouldReduceMotion ? {} : { opacity: 0, y: 28 }}
             animate={shouldReduceMotion ? {} : { opacity: 1, y: 0 }}
@@ -113,12 +116,11 @@ export const Hero: React.FC = () => {
             {t.hero.titleLine1}
           </motion.span>
 
-          {/* Line 2: DREAMS INTO REALITY */}
           <motion.span
             initial={shouldReduceMotion ? {} : { opacity: 0, y: 28 }}
             animate={shouldReduceMotion ? {} : { opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4, ease: [0.22, 1, 0.36, 1] }}
-            className="block text-[#ffdea5] drop-shadow-[0_3px_12px_rgba(255,222,165,0.35)] mt-1"
+            className="block text-[#ffdea5] drop-shadow-[0_3px_12px_rgba(255,222,165,0.35)] mt-1 text-3xl sm:text-4xl md:text-5xl font-serif font-medium"
           >
             {t.hero.titleLine2}
           </motion.span>
@@ -129,13 +131,26 @@ export const Hero: React.FC = () => {
           initial={shouldReduceMotion ? {} : { opacity: 0, y: 20 }}
           animate={shouldReduceMotion ? {} : { opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.55, ease: 'easeOut' }}
-          className="font-sans text-lg sm:text-xl md:text-2xl text-[#fcf9f8]/95 mb-10 max-w-3xl mx-auto leading-relaxed drop-shadow-[0_2px_4px_rgba(0,0,0,0.6)] font-medium"
+          className="font-sans text-base sm:text-lg md:text-xl text-[#fcf9f8]/95 mb-4 max-w-3xl mx-auto leading-relaxed drop-shadow-[0_2px_4px_rgba(0,0,0,0.6)] font-medium"
         >
           {t.hero.description}
         </motion.p>
 
+        {/* Supporting Line */}
+        {t.hero.supportingText && (
+          <motion.p
+            initial={shouldReduceMotion ? {} : { opacity: 0, y: 15 }}
+            animate={shouldReduceMotion ? {} : { opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.62, ease: 'easeOut' }}
+            className="font-sans text-xs sm:text-sm md:text-base text-[#ffdea5]/90 mb-8 max-w-2xl mx-auto tracking-wide drop-shadow-[0_2px_4px_rgba(0,0,0,0.6)] font-normal"
+          >
+            {t.hero.supportingText}
+          </motion.p>
+        )}
+
         {/* 4. Action Buttons */}
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
+          {/* CTA 1: See Available Plots & Homes */}
           <motion.a
             href="#projects"
             initial={shouldReduceMotion ? {} : { opacity: 0, y: 20 }}
@@ -143,21 +158,26 @@ export const Hero: React.FC = () => {
             transition={{ duration: 0.7, delay: 0.68, ease: 'easeOut' }}
             whileHover={{ y: -3, scale: 1.02 }}
             whileTap={{ scale: 0.98 }}
-            className="px-9 py-4 bg-[#fed488] text-[#785a1a] font-sans text-base font-bold rounded-lg hover:bg-[#e9c176] transition-all shadow-lg hover:shadow-xl duration-200 text-center"
+            className="px-8 py-4 bg-[#fed488] text-[#034F90] font-sans text-sm sm:text-base font-bold rounded-lg hover:bg-[#e9c176] transition-all shadow-lg hover:shadow-xl duration-200 text-center flex items-center justify-center gap-2 group"
           >
-            {t.hero.exploreBtn}
+            <span>{t.hero.exploreBtn}</span>
+            <ArrowRight className="w-4 h-4 text-[#034F90] transition-transform duration-200 group-hover:translate-x-1" />
           </motion.a>
 
+          {/* CTA 2: Have a Quick Chat on WhatsApp */}
           <motion.a
-            href="#contact"
+            href={WHATSAPP_URL}
+            target="_blank"
+            rel="noopener noreferrer"
             initial={shouldReduceMotion ? {} : { opacity: 0, y: 20 }}
             animate={shouldReduceMotion ? {} : { opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.8, ease: 'easeOut' }}
             whileHover={{ y: -3, scale: 1.02 }}
             whileTap={{ scale: 0.98 }}
-            className="px-9 py-4 bg-transparent border-2 border-[#fcf9f8] text-[#fcf9f8] font-sans text-base font-bold rounded-lg hover:bg-[#034F90] hover:border-[#034F90] hover:text-white transition-all duration-300 text-center"
+            className="px-8 py-4 bg-emerald-600/90 hover:bg-emerald-600 border border-emerald-400 text-white font-sans text-sm sm:text-base font-bold rounded-lg transition-all duration-300 text-center flex items-center justify-center gap-2 shadow-lg hover:shadow-xl backdrop-blur-sm"
           >
-            {t.hero.contactBtn}
+            <MessageCircle className="w-5 h-5 text-white" />
+            <span>{t.hero.whatsappBtn}</span>
           </motion.a>
         </div>
       </div>

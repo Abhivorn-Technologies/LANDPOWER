@@ -15,7 +15,7 @@ export const Footer: React.FC = () => {
   return (
     <footer className="bg-[#034F90] text-[#fcf9f8] pt-16 pb-8 border-t border-white/10">
       <div className="max-w-[1280px] mx-auto px-4 md:px-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
-        {/* Col 1: Brand & Logo (Clean spacing between logo, tagline, and social icons) */}
+        {/* Col 1: Brand & Logo */}
         <div className="space-y-4">
           <div className="relative h-20 sm:h-24 md:h-28 w-56 sm:w-64 md:w-72">
             <Image
@@ -77,7 +77,7 @@ export const Footer: React.FC = () => {
 
             {/* WhatsApp */}
             <a
-              href="https://wa.me/919010214100"
+              href="https://wa.me/919866387871"
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Chat with LAND POWER on WhatsApp"
@@ -96,56 +96,57 @@ export const Footer: React.FC = () => {
           </div>
         </div>
 
-        {/* Col 2: Quick Links */}
+        {/* Col 2: Final Website Section Links */}
         <div>
           <h4 className="font-serif text-xl font-semibold text-[#fcf9f8] mb-6 border-b border-white/10 pb-2">
             {t.footer.quickLinks}
           </h4>
-          <ul className="space-y-3 font-sans text-sm text-[#e5e2e1]/80">
-            <li>
-              <Link href="/#home" className="hover:text-[#ffdea5] transition-colors">
-                {t.nav.home}
-              </Link>
-            </li>
-            <li>
-              <Link href="/#about" className="hover:text-[#ffdea5] transition-colors">
-                {t.nav.about}
-              </Link>
-            </li>
-            <li>
-              <Link href="/#services" className="hover:text-[#ffdea5] transition-colors">
-                {t.nav.services}
-              </Link>
-            </li>
-            <li>
-              <Link href="/#projects" className="hover:text-[#ffdea5] transition-colors">
-                {t.nav.projects}
-              </Link>
-            </li>
-            <li>
-              <Link href="/#why-us" className="hover:text-[#ffdea5] transition-colors">
-                {t.nav.whyUs}
-              </Link>
-            </li>
-            <li>
-              <Link href="/#testimonials" className="hover:text-[#ffdea5] transition-colors">
-                {t.nav.testimonials}
-              </Link>
-            </li>
-            <li>
-              <Link href="/#contact" className="hover:text-[#ffdea5] transition-colors">
-                {t.nav.contact}
-              </Link>
-            </li>
-          </ul>
+          <div className="grid grid-cols-2 gap-x-4 gap-y-2.5 font-sans text-xs sm:text-sm text-[#e5e2e1]/80">
+            <Link href="/#home" className="hover:text-[#ffdea5] transition-colors">
+              {t.nav.home}
+            </Link>
+            <Link href="/#about" className="hover:text-[#ffdea5] transition-colors">
+              {t.nav.about}
+            </Link>
+            <Link href="/#history" className="hover:text-[#ffdea5] transition-colors">
+              {t.nav.history}
+            </Link>
+            <Link href="/#services" className="hover:text-[#ffdea5] transition-colors">
+              {t.nav.services}
+            </Link>
+            <Link href="/#leadership" className="hover:text-[#ffdea5] transition-colors">
+              {t.nav.manager}
+            </Link>
+            <Link href="/#ambassador" className="hover:text-[#ffdea5] transition-colors">
+              {t.nav.ambassador}
+            </Link>
+            <Link href="/#why-us" className="hover:text-[#ffdea5] transition-colors">
+              {t.nav.whyUs}
+            </Link>
+            <Link href="/#projects" className="hover:text-[#ffdea5] transition-colors">
+              {t.nav.projects}
+            </Link>
+            <Link href="/#testimonials" className="hover:text-[#ffdea5] transition-colors">
+              {t.nav.testimonials}
+            </Link>
+            <Link href="/#gallery" className="hover:text-[#ffdea5] transition-colors">
+              {t.nav.gallery}
+            </Link>
+            <Link href="/#csr" className="hover:text-[#ffdea5] transition-colors">
+              {t.nav.csr}
+            </Link>
+            <Link href="/#contact" className="hover:text-[#ffdea5] transition-colors">
+              {t.nav.contact}
+            </Link>
+          </div>
         </div>
 
-        {/* Col 3: Services */}
+        {/* Col 3: Primary Offerings */}
         <div>
           <h4 className="font-serif text-xl font-semibold text-[#fcf9f8] mb-6 border-b border-white/10 pb-2">
             {t.footer.servicesTitle}
           </h4>
-          <ul className="space-y-3 font-sans text-sm text-[#e5e2e1]/80">
+          <ul className="space-y-3 font-sans text-xs sm:text-sm text-[#e5e2e1]/80">
             <li>
               <Link href="/services/open-plots" className="hover:text-[#ffdea5] transition-colors">
                 Open Plots
@@ -158,7 +159,7 @@ export const Footer: React.FC = () => {
             </li>
             <li>
               <Link href="/services/residential-spaces" className="hover:text-[#ffdea5] transition-colors">
-                Residential Spaces
+                Residential Spaces & Gated Communities
               </Link>
             </li>
             <li>
@@ -167,13 +168,13 @@ export const Footer: React.FC = () => {
               </Link>
             </li>
             <li>
-              <Link href="/services/investment-guidance" className="hover:text-[#ffdea5] transition-colors">
-                Investment Guidance
+              <Link href="/about" className="hover:text-[#ffdea5] transition-colors">
+                About LAND POWER
               </Link>
             </li>
             <li>
-              <Link href="/construction" className="hover:text-[#ffdea5] transition-colors">
-                Construction Solutions
+              <Link href="/founder" className="hover:text-[#ffdea5] transition-colors">
+                Managing Director Profile
               </Link>
             </li>
           </ul>
@@ -184,27 +185,27 @@ export const Footer: React.FC = () => {
           <h4 className="font-serif text-xl font-semibold text-[#fcf9f8] mb-6 border-b border-white/10 pb-2">
             {t.footer.contactInfo}
           </h4>
-          <ul className="space-y-3 font-sans text-sm text-[#e5e2e1]/80">
+          <ul className="space-y-3 font-sans text-xs sm:text-sm text-[#e5e2e1]/80">
             <li className="flex items-start gap-3">
-              <Phone className="w-4 h-4 text-[#ffdea5] mt-1 shrink-0" />
-              <a href="tel:08912712345" className="hover:text-[#ffdea5] transition-colors">
-                Phone: 0891-2712345
+              <Smartphone className="w-4 h-4 text-[#ffdea5] mt-1 shrink-0" />
+              <a href="tel:+919866387871" className="hover:text-[#ffdea5] transition-colors font-semibold">
+                Mobile: +91 98663 87871
               </a>
             </li>
             <li className="flex items-start gap-3">
-              <Smartphone className="w-4 h-4 text-[#ffdea5] mt-1 shrink-0" />
-              <a href="tel:+919010214100" className="hover:text-[#ffdea5] transition-colors font-semibold">
-                Mobile: +91 90102 14100
+              <Phone className="w-4 h-4 text-[#ffdea5] mt-1 shrink-0" />
+              <a href="tel:08912712345" className="hover:text-[#ffdea5] transition-colors">
+                Landline: 0891-2712345
               </a>
             </li>
             <li className="flex items-start gap-3">
               <Mail className="w-4 h-4 text-[#ffdea5] mt-1 shrink-0" />
               <div className="flex flex-col gap-0.5">
-                <a href="mailto:sales@landpower.in" className="hover:text-[#ffdea5] font-semibold text-[#ffdea5] transition-colors">
-                  sales@landpower.in
+                <a href="mailto:rk@landpower.in" className="hover:text-[#ffdea5] font-semibold text-[#ffdea5] transition-colors">
+                  rk@landpower.in
                 </a>
-                <a href="mailto:marketing@landpower.in" className="hover:text-[#ffdea5] transition-colors">
-                  marketing@landpower.in
+                <a href="mailto:sales@landpower.in" className="hover:text-[#ffdea5] transition-colors">
+                  sales@landpower.in
                 </a>
               </div>
             </li>
@@ -214,9 +215,9 @@ export const Footer: React.FC = () => {
                 href={GOOGLE_MAPS_URL}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="hover:text-[#ffdea5] transition-colors leading-relaxed group"
+                className="hover:text-[#ffdea5] transition-colors leading-relaxed group text-xs"
               >
-                Prathapas Pride, Santhipuram, Akkayapalem, Visakhapatnam – 530016, Andhra Pradesh
+                LAND POWER LLP, No: 49-47-9, Flat No: 201 & 202, Prathapas Pride, Santhipuram, Akkayapalem, Visakhapatnam – 530016
               </a>
             </li>
           </ul>
@@ -246,12 +247,12 @@ export const Footer: React.FC = () => {
 
         {/* Right Side: Legal Links */}
         <div className="flex space-x-6 shrink-0">
-          <a href="#" className="hover:text-[#ffdea5] transition-colors">
+          <Link href="/privacy-policy" className="hover:text-[#ffdea5] transition-colors">
             {t.footer.privacy}
-          </a>
-          <a href="#" className="hover:text-[#ffdea5] transition-colors">
+          </Link>
+          <Link href="/terms-and-conditions" className="hover:text-[#ffdea5] transition-colors">
             {t.footer.terms}
-          </a>
+          </Link>
         </div>
       </div>
     </footer>

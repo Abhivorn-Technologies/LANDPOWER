@@ -4,11 +4,15 @@ export interface Translations {
   nav: {
     home: string;
     about: string;
+    history: string;
     services: string;
-    properties: string;
-    projects: string;
+    manager: string;
+    ambassador: string;
     whyUs: string;
+    projects: string;
     testimonials: string;
+    gallery: string;
+    csr: string;
     contact: string;
     callExpert: string;
   };
@@ -17,23 +21,55 @@ export interface Translations {
     titleLine1: string;
     titleLine2: string;
     description: string;
+    supportingText: string;
     exploreBtn: string;
-    contactBtn: string;
+    whatsappBtn: string;
   };
   about: {
     eyebrow: string;
     heading: string;
     yearsExcellence: string;
+    subtitle: string;
     para1: string;
     para2: string;
-    qualityTitle: string;
-    qualityDesc: string;
-    deliveryTitle: string;
-    deliveryDesc: string;
-    processTitle: string;
-    processDesc: string;
-    satisfactionTitle: string;
-    satisfactionDesc: string;
+    previewPara1: string;
+    previewPara2: string;
+    moreAboutBtn: string;
+    visionTitle: string;
+    visionDesc: string;
+    missionTitle: string;
+    missionDesc: string;
+    leaderHeading: string;
+    leaderQuote: string;
+    pillarsTitle: string;
+    pillar1Title: string;
+    pillar1Desc: string;
+    pillar2Title: string;
+    pillar2Desc: string;
+    pillar3Title: string;
+    pillar3Desc: string;
+    pillar4Title: string;
+    pillar4Desc: string;
+  };
+  history: {
+    eyebrow: string;
+    heading: string;
+    subtitle: string;
+    story1: string;
+    story2: string;
+    story3: string;
+    stat1Number: string;
+    stat1Label: string;
+    stat2Number: string;
+    stat2Label: string;
+    stat3Number: string;
+    stat3Label: string;
+    point1Title: string;
+    point1Desc: string;
+    point2Title: string;
+    point2Desc: string;
+    point3Title: string;
+    point3Desc: string;
   };
   services: {
     eyebrow: string;
@@ -43,12 +79,11 @@ export interface Translations {
     luxuryVillasDesc: string;
     residentialDesc: string;
     commercialDesc: string;
-    investmentDesc: string;
-    constructionDesc: string;
     explore: string;
   };
   leadership: {
     eyebrow: string;
+    name: string;
     role: string;
     quote: string;
     description: string;
@@ -60,6 +95,7 @@ export interface Translations {
   };
   ambassador: {
     eyebrow: string;
+    name: string;
     role: string;
     description1: string;
     description2: string;
@@ -68,18 +104,12 @@ export interface Translations {
     eyebrow: string;
     heading: string;
     subtitle: string;
-    trustedTitle: string;
-    trustedDesc: string;
-    primeTitle: string;
-    primeDesc: string;
-    qualityTitle: string;
-    qualityDesc: string;
-    transparentTitle: string;
-    transparentDesc: string;
-    customerTitle: string;
-    customerDesc: string;
-    longtermTitle: string;
-    longtermDesc: string;
+    card1Title: string;
+    card1Desc: string;
+    card2Title: string;
+    card2Desc: string;
+    card3Title: string;
+    card3Desc: string;
   };
   projects: {
     eyebrow: string;
@@ -89,8 +119,18 @@ export interface Translations {
     ongoing: string;
     upcoming: string;
     completed: string;
+    ongoingDesc: string;
+    upcomingDesc: string;
+    completedDesc: string;
     viewProject: string;
+    requestInfo: string;
     location: string;
+    brochureNote: string;
+  };
+  testimonials: {
+    eyebrow: string;
+    heading: string;
+    subtitle: string;
   };
   gallery: {
     eyebrow: string;
@@ -98,23 +138,24 @@ export interface Translations {
     subtitle: string;
     exploreFull: string;
   };
-  testimonials: {
+  csr: {
     eyebrow: string;
     heading: string;
     subtitle: string;
-    test1Quote: string;
-    test1Role: string;
-    test2Quote: string;
-    test2Role: string;
-    test3Quote: string;
-    test3Role: string;
+    pillar1Title: string;
+    pillar1Desc: string;
+    pillar2Title: string;
+    pillar2Desc: string;
+    pillar3Title: string;
+    pillar3Desc: string;
   };
   contact: {
     eyebrow: string;
     heading: string;
     subtitle: string;
-    callTitle: string;
-    whatsappTitle: string;
+    mobileTitle: string;
+    landlineTitle: string;
+    emailTitle: string;
     officeTitle: string;
     officeAddress: string;
     formTitle: string;
@@ -124,7 +165,8 @@ export interface Translations {
     phone: string;
     projectDetails: string;
     submit: string;
-    mapView: string;
+    whatsappCtaTitle: string;
+    whatsappCtaDesc: string;
   };
   footer: {
     tagline: string;

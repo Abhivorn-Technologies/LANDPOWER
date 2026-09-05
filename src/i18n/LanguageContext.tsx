@@ -1,6 +1,6 @@
 'use client';
 
-import React, { createContext, useContext, useState, useEffect, ReactNode } from 'react';
+import React, { createContext, useContext, ReactNode, useSyncExternalStore } from 'react';
 import { Language, LanguageOption } from '@/types';
 import { translations } from './translations';
 import { Translations } from './types';
@@ -21,19 +21,47 @@ interface LanguageContextType {
 
 const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
 
-export function LanguageProvider({ children }: { children: ReactNode }) {
-  const [language, setLanguageState] = useState<Language>('en');
+const LANGUAGE_STORAGE_KEY = 'landpower_language';
+const listeners = new Set<() => void>();
 
-  useEffect(() => {
-    const savedLang = localStorage.getItem('landpower_language') as Language;
+function subscribeLanguage(callback: () => void) {
+  listeners.add(callback);
+  return () => {
+    listeners.delete(callback);
+  };
+}
+
+function getStoredLanguageSnapshot(): Language {
+  if (typeof window === 'undefined') return 'en';
+  try {
+    const savedLang = localStorage.getItem(LANGUAGE_STORAGE_KEY) as Language;
     if (savedLang && ['en', 'te', 'hi', 'or'].includes(savedLang)) {
-      setLanguageState(savedLang);
+      return savedLang;
     }
-  }, []);
+  } catch {
+    // ignore
+  }
+  return 'en';
+}
+
+function getServerLanguageSnapshot(): Language {
+  return 'en';
+}
+
+export function LanguageProvider({ children }: { children: ReactNode }) {
+  const language = useSyncExternalStore(
+    subscribeLanguage,
+    getStoredLanguageSnapshot,
+    getServerLanguageSnapshot
+  );
 
   const setLanguage = (lang: Language) => {
-    setLanguageState(lang);
-    localStorage.setItem('landpower_language', lang);
+    try {
+      localStorage.setItem(LANGUAGE_STORAGE_KEY, lang);
+      listeners.forEach((listener) => listener());
+    } catch {
+      // ignore
+    }
   };
 
   const t = translations[language] || translations.en;
@@ -52,3 +80,4 @@ export function useLanguage() {
   }
   return context;
 }
+

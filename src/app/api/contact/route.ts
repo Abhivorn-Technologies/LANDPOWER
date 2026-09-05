@@ -57,10 +57,11 @@ export async function POST(request: Request) {
       { success: false, error: result.message || 'Failed to deliver email.' },
       { status: 500 }
     );
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error('Contact API Error:', error);
+    const errorMessage = error instanceof Error ? error.message : 'Internal server error';
     return NextResponse.json(
-      { success: false, error: error.message || 'Internal server error' },
+      { success: false, error: errorMessage },
       { status: 500 }
     );
   }

@@ -8,7 +8,7 @@ import { useLanguage } from '@/i18n/LanguageContext';
 import { SectionHeading } from '../common/SectionHeading';
 import { AnimatedSection } from '../common/AnimatedSection';
 import { servicesData } from '@/data/services';
-import { ArrowRight, Trees, Home, Building, Landmark, TrendingUp, HardHat } from 'lucide-react';
+import { ArrowRight, Trees, Home, Building, Landmark } from 'lucide-react';
 
 export const Services: React.FC = () => {
   const { t } = useLanguage();
@@ -23,12 +23,8 @@ export const Services: React.FC = () => {
         return <Building className="w-7 h-7 text-[#034F90] group-hover:text-white transition-colors" />;
       case 'domain':
         return <Landmark className="w-7 h-7 text-[#034F90] group-hover:text-white transition-colors" />;
-      case 'trending_up':
-        return <TrendingUp className="w-7 h-7 text-[#034F90] group-hover:text-white transition-colors" />;
-      case 'construction':
-        return <HardHat className="w-7 h-7 text-[#034F90] group-hover:text-white transition-colors" />;
       default:
-        return <HardHat className="w-7 h-7 text-[#034F90] group-hover:text-white transition-colors" />;
+        return <Building className="w-7 h-7 text-[#034F90] group-hover:text-white transition-colors" />;
     }
   };
 
@@ -47,17 +43,17 @@ export const Services: React.FC = () => {
           />
         </AnimatedSection>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {/* 4 Primary Offerings Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           {servicesData.map((service, idx) => {
-            // Direct route for construction is /construction
-            const navRoute = service.id === 'construction' ? '/construction' : `/services/${service.id}`;
+            const navRoute = `/services/${service.id}`;
 
             return (
               <AnimatedSection key={service.id} delay={idx * 0.08} direction="up">
                 <motion.div
                   whileHover={{ y: -6 }}
                   transition={{ duration: 0.3, ease: 'easeOut' }}
-                  className="group bg-white rounded-xl p-8 border border-[#e5e2e1] hover:border-[#034F90]/40 hover:shadow-2xl transition-all duration-300 h-full flex flex-col justify-between"
+                  className="group bg-white rounded-xl p-6 sm:p-7 border border-[#e5e2e1] hover:border-[#034F90]/40 hover:shadow-2xl transition-all duration-300 h-full flex flex-col justify-between"
                 >
                   <div>
                     {/* Service Image Thumbnail */}
@@ -67,7 +63,7 @@ export const Services: React.FC = () => {
                         alt={service.titleKey}
                         fill
                         unoptimized
-                        sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                        sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 25vw"
                         className="object-cover transition-transform duration-700 group-hover:scale-108"
                       />
                       <div className="absolute top-3 left-3 w-12 h-12 bg-white/90 backdrop-blur-sm rounded-lg flex items-center justify-center group-hover:bg-[#034F90] transition-colors shadow-md">
@@ -79,7 +75,7 @@ export const Services: React.FC = () => {
                       {service.titleKey}
                     </h3>
 
-                    <p className="font-sans text-sm text-[#43474e] mb-6 leading-relaxed">
+                    <p className="font-sans text-xs sm:text-sm text-[#43474e] mb-6 leading-relaxed">
                       {getServiceDesc(service.descriptionKey)}
                     </p>
                   </div>

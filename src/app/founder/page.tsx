@@ -18,12 +18,10 @@ import {
   HeartPulse,
   Globe2,
   Award,
-  Compass,
   ArrowRight,
   ChevronDown,
   ChevronLeft,
   Mail,
-  Building2,
   Sparkles,
   CheckCircle2,
 } from 'lucide-react';
@@ -127,8 +125,8 @@ export default function FounderPage() {
                 <div className="absolute inset-0 bg-[#034F90]/15 rounded-3xl transform -translate-x-4 -translate-y-4" />
                 <div className="relative rounded-3xl overflow-hidden shadow-2xl aspect-[4/5] w-full border border-[#e5e2e1] group">
                   <Image
-                    src="/assets/founder/managing-director.png"
-                    alt="Rama Krishna Rompivalasa - Managing Director of Land Power"
+                    src="/assets/founder/79116.png"
+                    alt="Ramakrishna Rompivalasa - Managing Director and Designated Partner, LAND POWER"
                     fill
                     unoptimized
                     className="object-cover object-top transition-transform duration-700 group-hover:scale-105"
@@ -137,8 +135,8 @@ export default function FounderPage() {
                   {/* Subtle Dark Blue Gradient Overlay */}
                   <div className="absolute inset-0 bg-gradient-to-t from-[#034F90]/80 via-transparent to-transparent" />
                   <div className="absolute bottom-6 left-6 right-6 text-white">
-                    <span className="font-serif text-xl font-bold block">Rama Krishna Rompivalasa</span>
-                    <span className="font-sans text-xs text-[#ffdea5] uppercase tracking-widest">Managing Director</span>
+                    <span className="font-serif text-xl font-bold block">Ramakrishna Rompivalasa</span>
+                    <span className="font-sans text-xs text-[#ffdea5] uppercase tracking-widest">Managing Director & Designated Partner</span>
                   </div>
                 </div>
               </div>
@@ -163,11 +161,11 @@ export default function FounderPage() {
               </div>
 
               <h1 className="font-serif text-4xl sm:text-5xl md:text-6xl text-[#034F90] font-bold mb-2 leading-tight">
-                Rama Krishna Rompivalasa
+                Ramakrishna Rompivalasa
               </h1>
 
               <p className="font-sans text-base sm:text-lg text-[#775a19] mb-6 uppercase tracking-widest font-semibold">
-                Managing Director, Land Power
+                Managing Director & Designated Partner, LAND POWER
               </p>
 
               {/* Tagline */}

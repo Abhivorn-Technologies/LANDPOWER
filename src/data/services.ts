@@ -17,7 +17,7 @@ export const servicesData: Service[] = [
   },
   {
     id: 'residential-spaces',
-    titleKey: 'Residential Spaces',
+    titleKey: 'Residential Spaces & Gated Communities',
     descriptionKey: 'residentialDesc',
     iconName: 'apartment',
     image: '/assets/services/residential.png',
@@ -28,19 +28,5 @@ export const servicesData: Service[] = [
     descriptionKey: 'commercialDesc',
     iconName: 'domain',
     image: '/assets/services/commercial.png',
-  },
-  {
-    id: 'investment-guidance',
-    titleKey: 'Investment Guidance',
-    descriptionKey: 'investmentDesc',
-    iconName: 'trending_up',
-    image: '/assets/services/open-plots.png',
-  },
-  {
-    id: 'construction',
-    titleKey: 'Construction',
-    descriptionKey: 'constructionDesc',
-    iconName: 'construction',
-    image: '/assets/services/Construction.png',
   },
 ];

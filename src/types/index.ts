@@ -5,6 +5,7 @@ export interface Project {
   title: string;
   category: 'ONGOING' | 'UPCOMING' | 'COMPLETED';
   categoryLabel: string;
+  description: string;
   location: string;
   type: string;
   image: string;
@@ -23,8 +24,10 @@ export interface Service {
 export interface Testimonial {
   id: string;
   name: string;
-  role: string;
-  quoteKey: string;
+  designation: string;
+  title: string;
+  review: string;
+  image: string;
   rating: number;
   location?: string;
 }

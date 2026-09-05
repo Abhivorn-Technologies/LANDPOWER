@@ -18,7 +18,7 @@ export const InteractiveMap: React.FC<InteractiveMapProps> = ({
   className = '',
 }) => {
   const mapContainerRef = useRef<HTMLDivElement | null>(null);
-  const mapInstanceRef = useRef<any>(null);
+  const mapInstanceRef = useRef<import('leaflet').Map | null>(null);
   const [isLoaded, setIsLoaded] = useState(false);
 
   useEffect(() => {

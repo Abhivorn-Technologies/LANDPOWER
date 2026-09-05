@@ -18,6 +18,10 @@ export const FloatingActions: React.FC = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
+  const WHATSAPP_URL =
+    'https://wa.me/919866387871?text=' +
+    encodeURIComponent('Hello LAND POWER, I would like more information about available plots and homes.');
+
   return (
     <div className="fixed bottom-6 right-6 z-50 flex flex-col gap-3 items-center">
       {/* Scroll to Top */}
@@ -33,7 +37,7 @@ export const FloatingActions: React.FC = () => {
 
       {/* Floating WhatsApp Action */}
       <a
-        href="https://wa.me/919010214100"
+        href={WHATSAPP_URL}
         target="_blank"
         rel="noopener noreferrer"
         className="w-14 h-14 rounded-full bg-[#25D366] text-white shadow-2xl flex items-center justify-center hover:scale-110 transition-transform focus:outline-none relative group"
