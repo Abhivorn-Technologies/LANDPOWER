@@ -15,7 +15,7 @@ export const Gallery: React.FC = () => {
   const [activeModalImage, setActiveModalImage] = useState<GalleryItem | null>(null);
 
   return (
-    <section id="gallery" className="py-20 md:py-28 px-4 md:px-8 bg-[#f6f3f2]">
+    <section id="gallery" className="py-20 md:py-28 px-4 md:px-8 bg-[#f6f3f2] scroll-mt-24 sm:scroll-mt-28">
       <div className="max-w-[1280px] mx-auto">
         <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-12">
           <AnimatedSection direction="up" className="max-w-2xl">

@@ -116,7 +116,7 @@ export const InteractiveMap: React.FC<InteractiveMapProps> = ({
 
   return (
     <div
-      className={`w-full h-72 sm:h-80 md:h-88 rounded-2xl overflow-hidden relative border-2 border-[#034F90]/20 shadow-md ${className}`}
+      className={`w-full h-72 sm:h-80 md:h-88 rounded-2xl overflow-hidden relative border-2 border-[#034F90]/20 shadow-md isolate z-0 ${className}`}
     >
       {/* Real Map Canvas Container */}
       <div ref={mapContainerRef} className="w-full h-full z-0 relative bg-[#f2efe9]" />
@@ -132,7 +132,7 @@ export const InteractiveMap: React.FC<InteractiveMapProps> = ({
       )}
 
       {/* Floating Info Overlay (Bottom Bar) - pointer-events-none on backdrop to allow drag/pan on map */}
-      <div className="absolute inset-x-3 bottom-3 z-[400] pointer-events-none">
+      <div className="absolute inset-x-3 bottom-3 z-10 pointer-events-none">
         <div className="bg-[#034F90]/90 backdrop-blur-md border border-white/20 p-3.5 sm:p-4 rounded-xl shadow-xl flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 text-white pointer-events-auto transition-all hover:bg-[#034F90]/95">
           <div className="flex items-start sm:items-center gap-3">
             <div className="w-9 h-9 rounded-full bg-white/10 border border-white/20 flex items-center justify-center text-[#ffdea5] shrink-0 mt-0.5 sm:mt-0">
@@ -171,7 +171,7 @@ export const InteractiveMap: React.FC<InteractiveMapProps> = ({
           }
         }}
         title="Recenter Map to Office"
-        className="absolute top-3 right-3 z-[400] p-2 bg-white/95 hover:bg-white text-[#034F90] rounded-lg shadow-md border border-[#034F90]/20 text-xs font-semibold flex items-center gap-1.5 transition-all hover:scale-105 active:scale-95 cursor-pointer"
+        className="absolute top-3 right-3 z-10 p-2 bg-white/95 hover:bg-white text-[#034F90] rounded-lg shadow-md border border-[#034F90]/20 text-xs font-semibold flex items-center gap-1.5 transition-all hover:scale-105 active:scale-95 cursor-pointer"
       >
         <Navigation className="w-3.5 h-3.5 text-[#034F90]" />
         <span className="hidden sm:inline">Recenter</span>

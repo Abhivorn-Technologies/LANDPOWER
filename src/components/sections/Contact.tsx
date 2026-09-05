@@ -99,7 +99,7 @@ export const Contact: React.FC = () => {
   };
 
   return (
-    <section id="contact" className="py-20 md:py-28 px-4 md:px-8 bg-[#fcf9f8]">
+    <section id="contact" className="py-20 md:py-28 px-4 md:px-8 bg-[#fcf9f8] relative z-0 scroll-mt-24 sm:scroll-mt-28">
       <div className="max-w-[1280px] mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16">
         {/* Info Side */}
         <AnimatedSection direction="up">

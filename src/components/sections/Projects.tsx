@@ -28,7 +28,7 @@ export const Projects: React.FC = () => {
   const currentCategoryObj = categories.find((c) => c.id === activeCategory);
 
   return (
-    <section id="projects" className="py-20 md:py-28 px-4 md:px-8 bg-[#fcf9f8]">
+    <section id="projects" className="py-20 md:py-28 px-4 md:px-8 bg-[#fcf9f8] scroll-mt-24 sm:scroll-mt-28">
       <div className="max-w-[1280px] mx-auto">
         {/* Section Header */}
         <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-10">
