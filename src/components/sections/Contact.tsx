@@ -1,11 +1,26 @@
 'use client';
 
 import React, { useState } from 'react';
-import Image from 'next/image';
+import dynamic from 'next/dynamic';
 import { motion } from 'framer-motion';
 import { useLanguage } from '@/i18n/LanguageContext';
 import { AnimatedSection } from '../common/AnimatedSection';
 import { Phone, Smartphone, Mail, MapPin, ExternalLink, Send, CheckCircle, Loader2 } from 'lucide-react';
+
+const InteractiveMap = dynamic(
+  () => import('../common/InteractiveMap').then((mod) => mod.InteractiveMap),
+  {
+    ssr: false,
+    loading: () => (
+      <div className="w-full h-72 sm:h-80 md:h-88 rounded-2xl overflow-hidden relative border-2 border-[#034F90]/20 shadow-md bg-[#f2efe9] flex flex-col items-center justify-center gap-3">
+        <div className="w-10 h-10 rounded-full border-3 border-[#034F90] border-t-transparent animate-spin" />
+        <span className="font-sans text-xs font-semibold text-[#034F90]">
+          Loading interactive office map...
+        </span>
+      </div>
+    ),
+  }
+);
 
 const GOOGLE_MAPS_URL =
   'https://www.google.com/maps/place/pratapas+pride,+Akkayyapalem,+Visakhapatnam,+Andhra+Pradesh+530016/@17.7365583,83.3028294,17z/data=!4m6!3m5!1s0x3a39432e474bdf79:0xf5484a99e9507fd4!8m2!3d17.7365065!4d83.3027272!16s%2Fg%2F11q2sdpfr3?hl=en&entry=ttu';
@@ -54,7 +69,7 @@ export const Contact: React.FC = () => {
         setFormData({ firstName: '', email: '', phone: '', details: '' });
       } else {
         // Fallback: trigger mailto if API returned non-200
-        const recipient = 'ajayguvva7890@gmail.com';
+        const recipient = 'sales@landpower.in';
         const subject = encodeURIComponent(`Free Consultation Request - ${currentData.firstName}`);
         const body = encodeURIComponent(
           `New Consultation Request:\n\n` +
@@ -69,7 +84,7 @@ export const Contact: React.FC = () => {
       }
     } catch {
       // Fallback on network exception
-      const recipient = 'ajayguvva7890@gmail.com';
+      const recipient = 'sales@landpower.in';
       const subject = encodeURIComponent(`Free Consultation Request - ${currentData.firstName}`);
       const body = encodeURIComponent(
         `New Consultation Request:\n\n` +
@@ -140,11 +155,7 @@ export const Contact: React.FC = () => {
                 Email Addresses
               </h4>
               <div className="flex flex-wrap items-center gap-3 font-sans text-sm font-semibold text-[#034F90]">
-                <a href="mailto:ajayguvva7890@gmail.com" className="hover:underline text-[#034F90] font-bold">
-                  ajayguvva7890@gmail.com
-                </a>
-                <span className="text-gray-300">|</span>
-                <a href="mailto:sales@landpower.in" className="hover:underline hover:text-[#023b6d]">
+                <a href="mailto:sales@landpower.in" className="hover:underline text-[#034F90] font-bold">
                   sales@landpower.in
                 </a>
                 <span className="text-gray-300">|</span>
@@ -179,45 +190,8 @@ export const Contact: React.FC = () => {
             </motion.a>
           </div>
 
-          {/* Map Preview Locator Section */}
-          <motion.a
-            whileHover={{ scale: 1.01 }}
-            href={GOOGLE_MAPS_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="w-full h-56 rounded-2xl overflow-hidden relative flex items-center justify-center border-2 border-[#034F90]/20 shadow-md group block cursor-pointer"
-          >
-            {/* Map Preview Image */}
-            <Image
-              src="/assets/contact/visakhapatnam-map.png"
-              alt="LAND POWER Visakhapatnam Google Maps Preview"
-              fill
-              sizes="(max-width: 1024px) 100vw, 50vw"
-              className="object-cover group-hover:scale-105 transition-transform duration-500"
-            />
-
-            {/* Subtle Brand Overlay to keep map details readable */}
-            <div className="absolute inset-0 bg-gradient-to-t from-[#034F90]/80 via-black/30 to-black/10 group-hover:from-[#034F90]/85 transition-all duration-300" />
-
-            {/* Interactive Pin Badge & CTA */}
-            <div className="relative z-10 text-center px-4 py-3 flex flex-col items-center space-y-2">
-              <div className="w-12 h-12 rounded-full bg-white/10 backdrop-blur-md border border-white/40 flex items-center justify-center text-[#ffdea5] shadow-lg group-hover:scale-110 transition-transform">
-                <MapPin className="w-6 h-6 text-[#ffdea5] animate-bounce" />
-              </div>
-              <div>
-                <h5 className="font-serif text-lg font-bold text-white tracking-wide">
-                  Prathapas Pride, Akkayyapalem
-                </h5>
-                <p className="font-sans text-xs text-[#ffdea5]/90 font-medium">
-                  Visakhapatnam, Andhra Pradesh – 530016
-                </p>
-              </div>
-              <span className="inline-flex items-center gap-2 bg-[#ffdea5] text-[#034F90] px-5 py-2 rounded-full font-sans text-xs font-bold shadow-lg group-hover:bg-white transition-colors mt-2">
-                <span>VIEW LIVE LOCATION</span>
-                <ExternalLink className="w-3.5 h-3.5" />
-              </span>
-            </div>
-          </motion.a>
+          {/* Real Interactive Map Section */}
+          <InteractiveMap googleMapsUrl={GOOGLE_MAPS_URL} />
         </AnimatedSection>
 
         {/* Form Side */}
@@ -231,8 +205,8 @@ export const Contact: React.FC = () => {
             </p>
             <div className="mb-6 p-3 bg-white/10 border border-[#ffdea5]/30 rounded-lg flex items-center justify-between text-xs font-sans">
               <span className="text-[#e5e2e1]/90">Submissions sent to:</span>
-              <a href="mailto:ajayguvva7890@gmail.com" className="font-bold text-[#ffdea5] hover:underline">
-                ajayguvva7890@gmail.com
+              <a href="mailto:sales@landpower.in" className="font-bold text-[#ffdea5] hover:underline">
+                sales@landpower.in
               </a>
             </div>
 
@@ -247,13 +221,13 @@ export const Contact: React.FC = () => {
                 {isActivationPending && (
                   <div className="bg-[#ffdea5]/15 border border-[#ffdea5] p-4 rounded-xl text-left font-sans text-xs space-y-2 max-w-md mx-auto my-3 text-white">
                     <p className="font-bold text-[#ffdea5] text-sm flex items-center gap-1.5">
-                      <span>📩 Action Needed on ajayguvva7890@gmail.com</span>
+                      <span>📩 Action Needed on sales@landpower.in</span>
                     </p>
                     <p className="text-[#e5e2e1] leading-relaxed">
-                      FormSubmit sent an initial <strong>&quot;Activate Form&quot;</strong> email to <strong>ajayguvva7890@gmail.com</strong>.
+                      FormSubmit sent an initial <strong>&quot;Activate Form&quot;</strong> email to <strong>sales@landpower.in</strong>.
                     </p>
                     <p className="text-[#ffdea5]/90 text-[11px] italic">
-                      👉 Open Gmail (Inbox or Spam folder) and click &quot;Activate Form&quot; once to enable direct delivery for all future website forms!
+                      👉 Open email (Inbox or Spam folder) and click &quot;Activate Form&quot; once to enable direct delivery for all future website forms!
                     </p>
                   </div>
                 )}
@@ -261,7 +235,7 @@ export const Contact: React.FC = () => {
                 <div className="bg-white/10 backdrop-blur-md border border-white/20 p-4 rounded-xl text-left font-sans text-xs space-y-2 max-w-md mx-auto my-4 text-[#e5e2e1]">
                   <div className="flex items-center justify-between border-b border-white/15 pb-2">
                     <span className="text-[#ffdea5] font-semibold">Target Email:</span>
-                    <span className="font-bold text-white">ajayguvva7890@gmail.com</span>
+                    <span className="font-bold text-white">sales@landpower.in</span>
                   </div>
                   <div><span className="text-[#e5e2e1]/70">Phone:</span> <strong className="text-white">{submittedData?.phone}</strong></div>
                   {submittedData?.email && <div><span className="text-[#e5e2e1]/70">Client Email:</span> <strong className="text-white">{submittedData.email}</strong></div>}
@@ -270,10 +244,10 @@ export const Contact: React.FC = () => {
 
                 <div className="flex flex-col sm:flex-row items-center justify-center gap-3 pt-2">
                   <a
-                    href={`mailto:ajayguvva7890@gmail.com?subject=${encodeURIComponent(`Consultation Request from ${submittedData?.firstName}`)}&body=${encodeURIComponent(`Name: ${submittedData?.firstName}\nPhone: ${submittedData?.phone}\nEmail: ${submittedData?.email || 'N/A'}\nDetails: ${submittedData?.details || 'N/A'}`)}`}
+                    href={`mailto:sales@landpower.in?subject=${encodeURIComponent(`Consultation Request from ${submittedData?.firstName}`)}&body=${encodeURIComponent(`Name: ${submittedData?.firstName}\nPhone: ${submittedData?.phone}\nEmail: ${submittedData?.email || 'N/A'}\nDetails: ${submittedData?.details || 'N/A'}`)}`}
                     className="px-5 py-2.5 bg-[#ffdea5] text-[#034F90] rounded-lg font-bold text-xs hover:bg-white transition-colors"
                   >
-                    Open Gmail / Send Direct Mail
+                    Open Email / Send Direct Mail
                   </a>
                   <button
                     type="button"

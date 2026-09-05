@@ -12,7 +12,7 @@ export async function POST(request: Request) {
       );
     }
 
-    const targetEmail = 'ajayguvva7890@gmail.com';
+    const targetEmail = 'sales@landpower.in';
 
     // Forward form data to FormSubmit API with browser headers
     const response = await fetch(`https://formsubmit.co/ajax/${targetEmail}`, {
@@ -45,7 +45,7 @@ export async function POST(request: Request) {
         success: true,
         needsActivation: true,
         message:
-          'FormSubmit activation email sent to ajayguvva7890@gmail.com. Please check your Gmail (Inbox/Spam) and click "Activate Form" once to enable instant inbox delivery!',
+          'FormSubmit activation email sent to sales@landpower.in. Please check your email (Inbox/Spam) and click "Activate Form" once to enable instant inbox delivery!',
       });
     }
 

@@ -26,8 +26,8 @@ export interface FullGalleryItem {
 export const fullGalleryItems: FullGalleryItem[] = [
   {
     id: 'g1',
-    title: 'Contemporary Architectural Villa',
-    category: 'Architecture',
+    title: 'Ongoing Construction & Structural Development',
+    category: 'Construction',
     image: '/assets/gallery/g1.png',
   },
   {

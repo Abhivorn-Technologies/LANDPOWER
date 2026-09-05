@@ -59,6 +59,7 @@ export const Gallery: React.FC = () => {
                 src={item.image}
                 alt={item.title}
                 fill
+                unoptimized
                 sizes="(max-width: 768px) 50vw, 25vw"
                 className="object-cover transition-transform duration-700 group-hover:scale-108"
               />
@@ -86,6 +87,7 @@ export const Gallery: React.FC = () => {
                 src={activeModalImage.image}
                 alt={activeModalImage.title}
                 fill
+                unoptimized
                 sizes="100vw"
                 className="object-contain"
               />
