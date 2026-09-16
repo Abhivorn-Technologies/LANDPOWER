@@ -67,7 +67,7 @@ export const Contact: React.FC = () => {
         setSubmitted(true);
         setFormData({ firstName: '', email: '', phone: '', details: '' });
       } else {
-        const recipient = 'rk@landpower.in';
+        const recipient = 'info@landpower.in';
         const subject = encodeURIComponent(`Project Enquiry - ${currentData.firstName}`);
         const body = encodeURIComponent(
           `New Consultation Request:\n\n` +
@@ -81,7 +81,7 @@ export const Contact: React.FC = () => {
         setSubmitted(true);
       }
     } catch {
-      const recipient = 'rk@landpower.in';
+      const recipient = 'info@landpower.in';
       const subject = encodeURIComponent(`Project Enquiry - ${currentData.firstName}`);
       const body = encodeURIComponent(
         `New Consultation Request:\n\n` +
@@ -197,8 +197,8 @@ export const Contact: React.FC = () => {
                 {t.contact.emailTitle}
               </h4>
               <div className="flex flex-wrap items-center gap-3 font-sans text-sm font-semibold text-[#034F90]">
-                <a href="mailto:rk@landpower.in" className="hover:underline text-[#034F90] font-bold">
-                  rk@landpower.in
+                <a href="mailto:info@landpower.in" className="hover:underline text-[#034F90] font-bold">
+                  info@landpower.in
                 </a>
                 <span className="text-gray-300">|</span>
                 <a href="mailto:sales@landpower.in" className="hover:underline hover:text-[#023b6d]">
@@ -255,7 +255,7 @@ export const Contact: React.FC = () => {
                 </p>
 
                 <div className="bg-white/10 backdrop-blur-md border border-white/20 p-4 rounded-xl text-left font-sans text-xs space-y-2 max-w-md mx-auto my-4 text-[#e5e2e1]">
-                  <div><span className="text-[#ffdea5] font-semibold">Contact Email:</span> <strong className="text-white">rk@landpower.in</strong></div>
+                  <div><span className="text-[#ffdea5] font-semibold">Contact Email:</span> <strong className="text-white">info@landpower.in</strong></div>
                   <div><span className="text-[#e5e2e1]/70">Phone:</span> <strong className="text-white">{submittedData?.phone}</strong></div>
                   {submittedData?.email && <div><span className="text-[#e5e2e1]/70">Email:</span> <strong className="text-white">{submittedData.email}</strong></div>}
                   {submittedData?.details && <div><span className="text-[#e5e2e1]/70">Requirement:</span> <span className="text-white italic">{submittedData.details}</span></div>}

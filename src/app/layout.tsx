@@ -136,9 +136,11 @@ const jsonLdSchema = {
     jobTitle: 'Managing Director & Founder',
   },
   sameAs: [
-    'https://www.facebook.com',
-    'https://www.instagram.com',
-    'https://www.linkedin.com',
+    'https://www.instagram.com/landpower_realestate/',
+    'https://www.facebook.com/profile.php?id=61594138986849',
+    'https://x.com/LandPower_VIZAG',
+    'https://www.linkedin.com/in/land-power-50bb72435/',
+    'https://www.reddit.com/user/Land_Power/',
   ],
 };
 
@@ -148,7 +150,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${playfair.variable} ${montserrat.variable} ${inter.variable} scroll-smooth`}>
+    <html
+      lang="en"
+      data-scroll-behavior="smooth"
+      className={`${playfair.variable} ${montserrat.variable} ${inter.variable} scroll-smooth`}
+    >
       <head>
         <script
           type="application/ld+json"
